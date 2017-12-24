@@ -4,23 +4,37 @@ mysql_packages:
   Alpine:
     - mysql
   CentOS-6:
+    - mysql-devel
+    - mysql-libs
     - mysql-server
+    - python-devel
   CentOS-7:
+    - mariadb-devel
+    - mariadb-libs
     - mariadb-server
+    - python-devel
   Debian-buster/sid:
     - mariadb-server
+    - python-dev
   Debian-8:
     - mysql-server
+    - python-dev
   default:
     - mysql
   Fedora:
     - mariadb-server
+    - mariadb-devel
+  openSUSE Leap:
+    - mariadb
+    - libmysqlclient-devel
   Ubuntu:
     - mariadb-server
+    - python-dev
 
-mysql_modules:
+mysql_pip_modules:
   default:
-    - MySQL-python
+    - mysqlclient
+    - mysql-python
 
 mysql_services:
   CentOS-6:
