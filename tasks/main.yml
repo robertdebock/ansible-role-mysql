@@ -10,7 +10,7 @@
       | default(mysql_packages['default'] )) }}"
 
 - name: install modules
-  package:
+  pip:
     name: "{{ item }}"
     state: present
   with_items:
