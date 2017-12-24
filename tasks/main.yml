@@ -9,14 +9,14 @@
       | default(mysql_packages[ansible_distribution]
       | default(mysql_packages['default'] )) }}"
 
-- name: install modules
-  pip:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - "{{ mysql_pip_modules[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
-      | default(mysql_pip_modules[ansible_distribution]
-      | default(mysql_pip_modules['default'] )) }}"
+# - name: install modules
+  # pip:
+    # name: "{{ item }}"
+    # state: present
+  # with_items:
+    # - "{{ mysql_pip_modules[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+      # | default(mysql_pip_modules[ansible_distribution]
+      # | default(mysql_pip_modules['default'] )) }}"
 
 - name: start and enable software
   service:

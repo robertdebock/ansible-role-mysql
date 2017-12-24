@@ -2,39 +2,45 @@
 # vars file for mysql
 mysql_packages:
   Alpine:
-    - mysql
+    - mariadb
+    - mariadb-dev
+    - python-dev
   CentOS-6:
     - mysql-devel
-    - mysql-libs
     - mysql-server
+    - MySQL-python
     - python-devel
   CentOS-7:
     - mariadb-devel
-    - mariadb-libs
     - mariadb-server
+    - MySQL-python
     - python-devel
   Debian-buster/sid:
+    - libmariadbclient-dev
     - mariadb-server
     - python-dev
   Debian-8:
-    - mysql-server
+    - libmysqlclient-dev
+    - mariadb-server
     - python-dev
-  default:
-    - mysql
   Fedora:
     - mariadb-server
     - mariadb-devel
+    - python-devel
+    - python2-PyMySQL
   openSUSE Leap:
-    - mariadb
     - libmysqlclient-devel
+    - mariadb
+    - python-devel
   Ubuntu:
     - mariadb-server
+    - libmariadbclient-dev
+    - libssl-dev
     - python-dev
 
 mysql_pip_modules:
   default:
     - mysqlclient
-    - mysql-python
 
 mysql_services:
   CentOS-6:
