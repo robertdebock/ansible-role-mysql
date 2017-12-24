@@ -1,0 +1,29 @@
+---
+# vars file for mysql
+mysql_packages:
+  Alpine:
+    - mysql
+  CentOS-6:
+    - mysql-server
+  CentOS-7:
+    - mariadb-server
+  Debian-buster/sid:
+    - mariadb-server
+  Debian-8:
+    - mysql-server
+  default:
+    - mysql
+  Fedora:
+    - mariadb-server
+  Ubuntu:
+    - mariadb-server
+
+mysql_services:
+  CentOS-6:
+    - mysqld
+  CentOS-7:
+    - mariadb
+  default:
+    - mysql
+  Fedora:
+    - mariadb

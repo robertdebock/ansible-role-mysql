@@ -1,0 +1,20 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: no
+
+  roles:
+    - role: ansible-role-mysql
+
+  tasks:
+    - name: Create database
+      mysql_db:
+        name: bobdata
+        state: present
+
+    - name:
+      mysql_user:
+        name: bob
+        password: 12345
+        priv: '*.*:ALL'
+        state: present
