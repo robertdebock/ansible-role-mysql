@@ -9,6 +9,15 @@
       | default(mysql_packages[ansible_distribution]
       | default(mysql_packages['default'] )) }}"
 
+- name: install modules
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ mysql_modules[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+      | default(mysql_modules[ansible_distribution]
+      | default(mysql_modules['default'] )) }}"
+
 - name: start and enable software
   service:
     name: "{{ item }}"

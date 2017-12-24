@@ -18,6 +18,10 @@ mysql_packages:
   Ubuntu:
     - mariadb-server
 
+mysql_modules:
+  default:
+    - MySQL-python
+
 mysql_services:
   CentOS-6:
     - mysqld

@@ -42,4 +42,4 @@ galaxy_info:
     - Ubuntu
 
 dependencies:
-  - robertdebock.bootstrap
+  - robertdebock.python-pip
