@@ -6,6 +6,8 @@ mysql_packages:
     - mariadb-dev
     - python-dev
     - py-mysqldb
+  Archlinux:
+    - mariadb
   CentOS-6:
     - mysql-devel
     - mysql-server
@@ -26,6 +28,10 @@ mysql_packages:
     - mariadb-server
     - python-dev
     - python-mysqldb
+  Debian-9:
+    - mariadb-server
+    - python-dev
+    - python-mysqldb
   Fedora:
     - mariadb-server
     - mariadb-devel
@@ -38,12 +44,14 @@ mysql_packages:
     - python-MySQL-python
   Ubuntu:
     - mariadb-server
-    - libmariadbclient-dev
+    # - libmariadbclient-dev
     - libssl-dev
     - python-dev
     - python-mysqldb
 
 mysql_services:
+  Archlinux:
+    - mariadb
   CentOS-6:
     - mysqld
   CentOS-7:
