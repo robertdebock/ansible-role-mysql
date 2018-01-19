@@ -8,6 +8,8 @@ driver:
 lint:
   name: yamllint
 platforms:
+  - name: mysql-archlinux
+    image: base/archlinux
   - name: mysql-alpine-3.6
     image: alpine:3.6
   - name: mysql-alpine-3.7
@@ -18,6 +20,8 @@ platforms:
     image: centos:7
   - name: mysql-debian-jessie
     image: debian:jessie
+  - name: mysql-debian-stretch
+    image: debian:stretch
   - name: mysql-debian-buster
     image: debian:buster
   - name: mysql-fedora-26
@@ -28,8 +32,13 @@ platforms:
     image: opensuse:42.2
   - name: mysql-opensuse-42.3
     image: opensuse:42.3
-  - name: mysql-ubuntu-zesty
-    image: ubuntu:zesty
+    # 14.04 LTS
+  - name: mysql-ubuntu-trusty
+    image: ubuntu:trusty
+    # 16.04 LTS
+  - name: mysql-ubuntu-xenial
+    image: ubuntu:xenial
+    # 17.04
   - name: mysql-ubuntu-artful
     image: ubuntu:artful
 provisioner:
