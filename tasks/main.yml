@@ -9,6 +9,13 @@
       | default(mysql_packages[ansible_distribution]
       | default(mysql_packages['default'] )) }}"
 
+- name: configure software
+  lineinfile:
+    dest: /etc/mysql/my.cnf
+    line: "bind-address {{ mysql_bind_address }}"
+  notify:
+    - restart software
+
 - name: start and enable software
   service:
     name: "{{ item }}"

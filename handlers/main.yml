@@ -1,2 +1,12 @@
 ---
 # handlers file for mysql
+- name: restart software
+  service:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - "{{ mysql_services[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+      | default(mysql_services[ansible_distribution]
+      | default(mysql_services['default'] )) }}"
+  when:
+    - ansible_virtualization_type != "docker"
