@@ -11,7 +11,7 @@
 
 - name: configure software
   ini_file:
-    dest: /etc/mysql/conf.d/mysql.cnf
+    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
     section: mysql
     option: bind-address
     value: "{{ mysql_bind_address }}"
