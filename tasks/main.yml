@@ -10,9 +10,11 @@
       | default(mysql_packages['default'] )) }}"
 
 - name: configure software
-  lineinfile:
-    dest: /etc/mysql/my.cnf
-    line: "bind-address {{ mysql_bind_address }}"
+  ini_file:
+    dest: /etc/mysql/conf.d/mysql.cnf
+    section:
+    option: bind-address
+    value: "{{ mysql_bind_address }}"
   notify:
     - restart software
 
