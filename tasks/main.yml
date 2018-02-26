@@ -16,7 +16,7 @@
     option: bind-address
     value: "{{ mysql_bind_address }}"
   notify:
-    - restart software
+    - restart mysql server
 
 - name: start and enable software
   service:
