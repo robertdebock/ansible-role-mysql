@@ -44,7 +44,6 @@ mysql_packages:
     - python-MySQL-python
   Ubuntu:
     - mariadb-server
-    # - libmariadbclient-dev
     - libssl-dev
     - python-dev
     - python-mysqldb
