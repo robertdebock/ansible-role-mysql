@@ -13,7 +13,7 @@ Access to a repository containing packages, likely on the internet.
 Role Variables
 --------------
 
-None known
+- mysql_bind_address: an address where MySQL must bind on.
 
 Dependencies
 ------------
