@@ -46,17 +46,15 @@ Example Playbook
     - role: robertdebock.mysql
 
   tasks:
-    - name: Create database
+    - name: create database
       mysql_db:
         name: bobdata
-        state: present
 
-    - name:
+    - name: create user
       mysql_user:
         name: bob
         password: 12345
         priv: '*.*:ALL'
-        state: present
 ```
 
 Install this role using `galaxy install robertdebock.mysql`.
