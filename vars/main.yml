@@ -23,6 +23,11 @@ mysql_packages:
     - mariadb-server
     - python-dev
     - python-mysqldb
+  Debian-7:
+    - libmysqlclient-dev
+    - mariadb-server
+    - python-dev
+    - python-mysqldb
   Debian-8:
     - libmysqlclient-dev
     - mariadb-server
