@@ -9,7 +9,7 @@ lint:
   name: yamllint
 platforms:
     # 14.04 LTS
-  - name: bootstrap-ubuntu-trusty
+  - name: mysql-ubuntu-trusty
     image: ubuntu:trusty
 provisioner:
   name: ansible

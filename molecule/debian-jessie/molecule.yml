@@ -8,7 +8,7 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: bootstrap-debian-jessie
+  - name: mysql-debian-jessie
     image: debian:jessie
 provisioner:
   name: ansible
