@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: no
+
+  roles:
+    - role: robertdebock.bootstrap
+    - role: ansible-role-mysql
