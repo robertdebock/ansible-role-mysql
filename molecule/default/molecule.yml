@@ -37,7 +37,6 @@ platforms:
   - name: mysql-ubuntu-bionic
     image: ubuntu:bionic
 provisioner:
-provisioner:
   name: ansible
   lint:
     name: ansible-lint
