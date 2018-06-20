@@ -47,6 +47,11 @@ mysql_packages:
     - mariadb
     - python-devel
     - python-MySQL-python
+  openSUSE Tumbleweed:
+    - libmysqlclient-devel
+    - mariadb
+    - python-devel
+    - python-MySQL-python
   Ubuntu:
     - mariadb-server
     - libssl-dev
