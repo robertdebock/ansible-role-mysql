@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: mysql-fedora-28
-    image: fedora:28
+  - name: mysql-debian-stable
+    image: debian:stable
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: fedora-28
+  name: debian-stable
 verifier:
   name: goss
   lint:

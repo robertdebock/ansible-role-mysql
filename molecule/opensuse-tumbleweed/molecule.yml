@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: mysql-centos-7
-    image: centos:7
+  - name: mysql-opensuse-tumbleweed
+    image: opensuse:tumbleweed
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: centos-7
+  name: opensuse-tumbleweed
 verifier:
   name: goss
   lint:
