@@ -1,0 +1,6 @@
+---
+# vars file for mysql
+mysql_packages:
+  - mariadb
+
+mysql_service: mariadb

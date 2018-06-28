@@ -1,0 +1,7 @@
+---
+# vars file for mysql
+mysql_packages:
+  - libmysqlclient-devel
+  - mariadb
+  - python-devel
+  - python-MySQL-python

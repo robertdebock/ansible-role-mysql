@@ -1,13 +1,22 @@
 ---
 # tasks file for mysql
+- name: load default variables
+  include_vars:
+    file: default.yml
+
+- name: load os-specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - default.yml
+
 - name: install software
   package:
     name: "{{ item }}"
     state: present
   with_items:
-    - "{{ mysql_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
-      | default(mysql_packages[ansible_distribution]
-      | default(mysql_packages['default'] )) }}"
+    - "{{ mysql_packages }}"
 
 - name: configure software
   ini_file:
@@ -20,12 +29,8 @@
 
 - name: start and enable software
   service:
-    name: "{{ item }}"
+    name: "{{ mysql_service }}"
     state: started
     enabled: yes
-  with_items:
-    - "{{ mysql_services[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
-      | default(mysql_services[ansible_distribution]
-      | default(mysql_services['default'] )) }}"
   when:
     - ansible_virtualization_type != "docker"
