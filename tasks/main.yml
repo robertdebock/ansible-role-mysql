@@ -1,5 +1,9 @@
 ---
 # tasks file for mysql
+- name: show something
+  debug:
+    msg: "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+
 - name: load default variables
   include_vars:
     file: default.yml
