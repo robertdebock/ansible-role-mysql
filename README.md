@@ -21,6 +21,8 @@ Role Variables
 --------------
 
 - mysql_bind_address: an address where MySQL must bind on.
+- mysql_databases: a list of databases to create.
+- mysql_users: a list of users to create.
 
 Dependencies
 ------------
