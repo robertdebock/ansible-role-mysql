@@ -66,17 +66,17 @@ Example Playbook
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.mysql
-
-  tasks:
-    - name: create database
-      mysql_db:
-        name: bobdata
-
-    - name: create user
-      mysql_user:
-        name: bob
-        password: 12345
-        priv: '*.*:ALL'
+       mysql_databases:
+         - name: firstdb
+         - name: seconddb
+       mysql_users:
+         - name: firstuser
+           password: MyPaSsWoRd
+           priv: "firstdb.*:ALL"
+           host: some.host.name
+         - name: seconduser
+           password: MyPaSsWoRd2
+           priv: "seconddb.*:ALL"
 ```
 
 Install this role using `galaxy install robertdebock.mysql`.
