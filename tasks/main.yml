@@ -14,6 +14,7 @@
 - name: install software
   package:
     name: "{{ item }}"
+    state: present
   with_items:
     - "{{ mysql_packages }}"
 
@@ -37,6 +38,7 @@
 - name: create databases
   mysql_db:
     name: "{{ item.name }}"
+    state: present
     encoding: "{{ item.encoding | default(omit) }}"
     collation: "{{ item.collation | default(omit) }}"
   with_items:
@@ -48,6 +50,7 @@
 - name: create users
   mysql_user:
     name: "{{ item.name }}"
+    state: present
     password: "{{ item.password | default (omit) }}"
     priv: "{{ item.priv | default (omit) }}"
     host: "{{ item.host | default (omit) }}"
