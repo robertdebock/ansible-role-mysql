@@ -15,3 +15,6 @@ mysql_bind_address: 127.0.0.1
 #   - name: seconduser
 #     password: MyPaSsWoRd2
 #     priv: "seconddb.*:ALL"
+
+# To update all packages installed by this roles, set `mysql_package_state` to `latest`.
+mysql_package_state: present

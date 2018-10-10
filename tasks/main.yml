@@ -1,24 +1,13 @@
 ---
 # tasks file for mysql
-- name: load default variables
-  include_vars:
-    file: default.yml
-
-- name: load os-specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-    - "{{ ansible_distribution }}.yml"
-    - default.yml
-
-- name: install software
+- name: install mysql
   package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - "{{ mysql_packages }}"
+    name: "{{ mysql_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+          | default(mysql_packages[ansible_distribution]
+          | defaukt(mysql_packages['default'])) }}"
+    state: "{{ mysql_package_state }}"
 
-- name: configure software
+- name: configure mysql
   ini_file:
     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
     section: mysqld
@@ -27,9 +16,11 @@
   notify:
     - restart mysql server
 
-- name: start and enable software
+- name: start and enable mysql
   service:
-    name: "{{ mysql_service }}"
+    name: "{{ mysql_service[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+          | default(mysql_service[ansible_distribution]
+          | default(mysql_service['default'])) }}"
     state: started
     enabled: yes
   when:

@@ -1,0 +1,56 @@
+---
+# vars file for mysql
+mysql_packages:
+  default:
+    - mariadb-server
+    - mariadb-devel
+    - python-devel
+    - python2-mysql
+  Alpine:
+    - mariadb
+    - mariadb-dev
+    - python-dev
+    - py-mysqldb
+  Archlinux:
+    - mariadb
+  CentOS-6:
+    - mysql-devel
+    - mysql-server
+    - MySQL-python
+    - python-devel
+  CentOS-7:
+    - mariadb-devel
+    - mariadb-server
+    - MySQL-python
+    - python-devel
+  Debian:
+    - mariadb-server
+    - python-dev
+    - python-mysqldb
+  Fedora:
+    - mariadb-server
+    - mariadb-devel
+    - python-devel
+    - python2-mysql
+  Ubuntu:
+    - mariadb-server
+    - libssl-dev
+    - python-dev
+    - python-mysqldb
+  openSUSE Leap:
+    - libmysqlclient-devel
+    - mariadb
+    - python-devel
+    - python-MySQL-python
+  openSUSE Tumbleweed:
+    - libmysqlclient-devel
+    - mariadb
+    - python-devel
+    - python-MySQL-python
+
+mysql_service:
+  default: mysql
+  Archlinux: mariadb
+  CentOS-6: mysqld
+  CentOS-7: mariadb
+  Fedora: mariadb
