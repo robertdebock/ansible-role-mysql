@@ -4,7 +4,7 @@
   package:
     name: "{{ mysql_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
           | default(mysql_packages[ansible_distribution]
-          | defaukt(mysql_packages['default'])) }}"
+          | default(mysql_packages['default'])) }}"
     state: "{{ mysql_package_state }}"
 
 - name: configure mysql
