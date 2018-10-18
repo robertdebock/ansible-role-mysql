@@ -1,9 +1,0 @@
----
-# vars file for mysql
-mysql_packages:
-  - mariadb-devel
-  - mariadb-server
-  - MySQL-python
-  - python-devel
-
-mysql_service: mariadb

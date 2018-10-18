@@ -1,9 +1,0 @@
----
-# vars file for mysql
-mysql_packages:
-  - mysql-devel
-  - mysql-server
-  - MySQL-python
-  - python-devel
-
-mysql_service: mysqld
