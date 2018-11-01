@@ -1,5 +1,7 @@
 ---
 # defaults file for mysql
+
+# The address mysql should bind to.
 mysql_bind_address: 127.0.0.1
 
 # This role can populate databases and users, see below.

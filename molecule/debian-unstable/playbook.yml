@@ -4,5 +4,5 @@
   gather_facts: false
 
   roles:
-    - role: robertdebock.bootstrap
-    - role: ansible-role-mysql
+    - robertdebock.bootstrap
+    - ansible-role-mysql

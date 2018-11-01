@@ -1,6 +1,6 @@
 ---
 # vars file for mysql
-mysql_packages:
+_mysql_packages:
   default:
     - mariadb-server
     - mariadb-devel
@@ -48,9 +48,13 @@ mysql_packages:
     - python-devel
     - python-MySQL-python
 
-mysql_service:
+mysql_packages: "{{ _mysql_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_packages[ansible_distribution] | default(_mysql_packages['default'])) }}"
+
+_mysql_service:
   default: mysql
   Archlinux: mariadb
   CentOS-6: mysqld
   CentOS-7: mariadb
   Fedora: mariadb
+
+mysql_service: "{{ _mysql_service[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_service[ansible_distribution] | default(_mysql_service['default'])) }}"

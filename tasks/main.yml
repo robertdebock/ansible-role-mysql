@@ -2,9 +2,7 @@
 # tasks file for mysql
 - name: install mysql
   package:
-    name: "{{ mysql_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
-          | default(mysql_packages[ansible_distribution]
-          | default(mysql_packages['default'])) }}"
+    name: "{{ mysql_packages }}"
     state: "{{ mysql_package_state }}"
 
 - name: configure mysql
@@ -18,9 +16,7 @@
 
 - name: start and enable mysql
   service:
-    name: "{{ mysql_service[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
-          | default(mysql_service[ansible_distribution]
-          | default(mysql_service['default'])) }}"
+    name: "{{ mysql_service }}"
     state: started
     enabled: yes
   when:
