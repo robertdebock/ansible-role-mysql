@@ -38,9 +38,9 @@
   mysql_user:
     name: "{{ item.name }}"
     state: present
-    password: "{{ item.password | default (omit) }}"
-    priv: "{{ item.priv | default (omit) }}"
-    host: "{{ item.host | default (omit) }}"
+    password: "{{ item.password | default(omit) }}"
+    priv: "{{ item.priv | default(omit) }}"
+    host: "{{ item.host | default(omit) }}"
   with_items:
     - "{{ mysql_users }}"
   when:
