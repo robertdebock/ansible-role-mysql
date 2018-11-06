@@ -3,8 +3,7 @@ mysql
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-mysql.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-mysql)
 
-Provides mysql/mariadb for your system.
-
+The purpose of this role is to install and configure mysql on your system.
 
 Example Playbook
 ----------------
