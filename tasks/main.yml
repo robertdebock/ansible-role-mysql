@@ -46,3 +46,6 @@
   when:
     - mysql_users is defined
     - ansible_virtualization_type != "docker"
+
+- name: flush handlers
+  meta: flush_handlers
