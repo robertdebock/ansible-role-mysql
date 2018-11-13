@@ -14,6 +14,13 @@
   notify:
     - restart mysql server
 
+- name: run mysql setup
+  command: /etc/init.d/mariadb setup
+  args:
+    creates: /var/lib/mysql/mysql
+  when:
+    - ansible_distribution == "Alpine"
+
 - name: start and enable mysql
   service:
     name: "{{ mysql_service }}"
