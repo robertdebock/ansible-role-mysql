@@ -20,6 +20,7 @@
     creates: /var/lib/mysql/mysql
   when:
     - ansible_distribution == "Alpine"
+    - ansible_virtualization_type != "docker"
 
 - name: start and enable mysql
   service:
