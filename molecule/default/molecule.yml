@@ -38,6 +38,8 @@ platforms:
     image: ubuntu:artful
   - name: mysql-ubuntu-devel
     image: ubuntu:devel
+  - name: mysql-ubuntu-latest
+    image: ubuntu:latest
 provisioner:
   name: ansible
   lint:
