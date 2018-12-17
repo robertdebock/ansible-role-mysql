@@ -48,6 +48,8 @@
     collation: "{{ item.collation | default(omit) }}"
   with_items:
     - "{{ mysql_databases }}"
+  loop_control:
+    label: "{{ item.name }}"
   when:
     - mysql_databases is defined
     - ansible_virtualization_type != "docker" or mysql_ignore_docker
@@ -61,6 +63,8 @@
     host: "{{ item.host | default(omit) }}"
   with_items:
     - "{{ mysql_users }}"
+  loop_control:
+    label: "{{ item.name }}"
   when:
     - mysql_users is defined
     - ansible_virtualization_type != "docker" or mysql_ignore_docker
