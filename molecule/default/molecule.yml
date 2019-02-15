@@ -34,8 +34,10 @@ platforms:
     image: opensuse:leap
   - name: mysql-opensuse-tumbleweed
     image: opensuse:tumbleweed
-  - name: mysql-ubuntu-artful
-    image: ubuntu:artful
+  - name: mysql-ubuntu-latest
+    image: ubuntu:latest
+  - name: mysql-ubuntu-rolling
+    image: ubuntu:rolling
   - name: mysql-ubuntu-devel
     image: ubuntu:devel
   - name: mysql-ubuntu-latest
