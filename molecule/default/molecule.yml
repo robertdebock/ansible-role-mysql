@@ -32,8 +32,6 @@ platforms:
     image: fedora:rawhide
   - name: mysql-opensuse-leap
     image: opensuse:leap
-  - name: mysql-opensuse-tumbleweed
-    image: opensuse:tumbleweed
   - name: mysql-ubuntu-latest
     image: ubuntu:latest
   - name: mysql-ubuntu-rolling
