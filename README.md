@@ -16,6 +16,16 @@ This example is taken from `molecule/default/playbook.yml`:
   become: yes
   gather_facts: yes
 
+  vars:
+    mysql_databases:
+      - name: my_db
+        encoding: utf8
+        collation: utf8_bin
+    mysql_users:
+      - name: my_user
+        password: my_pass
+        priv: "my_db.*:ALL"
+
   roles:
     - robertdebock.mysql
 ```
