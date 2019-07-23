@@ -30,8 +30,7 @@ _mysql_packages:
     - mariadb-server
     - mariadb-devel
     - python-devel
-    - python2-mysql
-    - MySQL-python
+    - python3-PyMySQL
   Ubuntu:
     - mariadb-server
     - libssl-dev
