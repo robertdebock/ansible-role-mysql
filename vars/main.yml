@@ -24,8 +24,8 @@ _mysql_packages:
     - python-devel
   Debian:
     - mariadb-server
-    - python-dev
-    - python-mysqldb
+    - python3-dev
+    - python3-mysqldb
   Fedora:
     - mariadb-server
     - mariadb-devel
@@ -34,8 +34,8 @@ _mysql_packages:
   Ubuntu:
     - mariadb-server
     - libssl-dev
-    - python-dev
-    - python-mysqldb
+    - python3-dev
+    - python3-mysqldb
   openSUSE Leap:
     - libmysqlclient-devel
     - mariadb
