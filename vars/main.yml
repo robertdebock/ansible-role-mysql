@@ -12,12 +12,7 @@ _mysql_packages:
     - py-mysqldb
   Archlinux:
     - mariadb
-  CentOS-6:
-    - mysql-devel
-    - mysql-server
-    - MySQL-python
-    - python-devel
-  CentOS-7:
+  CentOS:
     - mariadb-devel
     - mariadb-server
     - MySQL-python
@@ -48,8 +43,6 @@ _mysql_service:
   default: mysql
   Alpine: mariadb
   Archlinux: mariadb
-  CentOS-6: mysqld
-  CentOS-7: mariadb
-  Fedora: mariadb
+  RedHat: mariadb
 
-mysql_service: "{{ _mysql_service[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_service[ansible_distribution] | default(_mysql_service['default'])) }}"
+mysql_service: "{{ _mysql_service[ansible_os_family] | default(_mysql_service['default']) }}"
