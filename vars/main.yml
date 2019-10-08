@@ -12,11 +12,16 @@ _mysql_packages:
     - py-mysqldb
   Archlinux:
     - mariadb
-  CentOS:
+  CentOS-7:
     - mariadb-devel
     - mariadb-server
     - MySQL-python
     - python-devel
+  CentOS:
+    - mysql-devel
+    - mysql-server
+    - python3-mysql
+    - python36-devel
   Debian:
     - mariadb-server
     - python3-dev
