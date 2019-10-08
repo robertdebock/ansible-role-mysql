@@ -20,7 +20,7 @@ _mysql_packages:
   CentOS:
     - mysql-devel
     - mysql-server
-    - python3-mysql
+    - python3-PyMySQL
     - python36-devel
   Debian:
     - mariadb-server
