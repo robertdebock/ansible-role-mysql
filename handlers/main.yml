@@ -4,5 +4,3 @@
   service:
     name: "{{ mysql_service }}"
     state: restarted
-  when:
-    - ansible_virtualization_type != "docker"

@@ -23,7 +23,6 @@
     creates: /var/lib/mysql/mysql
   when:
     - ansible_distribution == "Alpine"
-    - ansible_virtualization_type != "docker"
 
 - name: run mysql_install_db
   command: mysql_install_db --basedir=/usr --datadir=/var/lib/mysql
@@ -37,8 +36,6 @@
     name: "{{ mysql_service }}"
     state: started
     enabled: yes
-  when:
-    - ansible_virtualization_type != "docker"
 
 - name: create databases
   mysql_db:
@@ -52,7 +49,6 @@
     label: "{{ item.name }}"
   when:
     - mysql_databases is defined
-    - ansible_virtualization_type != "docker"
 
 - name: create users
   mysql_user:
@@ -67,7 +63,6 @@
     label: "{{ item.name }}"
   when:
     - mysql_users is defined
-    - ansible_virtualization_type != "docker"
 
 - name: flush handlers
   meta: flush_handlers
