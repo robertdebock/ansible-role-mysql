@@ -9,6 +9,9 @@ galaxy_info:
   min_ansible_container_version: 0.2.0
 
   platforms:
+    - name: Amazon
+      versions:
+        - all
     - name: Alpine
       versions:
         - all
