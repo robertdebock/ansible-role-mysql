@@ -40,6 +40,7 @@ _mysql_service:
   default: mysql
   Alpine: mariadb
   Archlinux: mariadb
+  Fedora: mariadb
   RedHat-7: mariadb
   RedHat: mysqld
 
