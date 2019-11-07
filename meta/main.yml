@@ -12,9 +12,6 @@ galaxy_info:
     - name: Amazon
       versions:
         - all
-    - name: Alpine
-      versions:
-        - all
     - name: ArchLinux
       versions:
         - all
