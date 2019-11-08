@@ -8,6 +8,10 @@ _mysql_packages:
   Alpine:
     - mariadb
     - py-mysqldb
+  Amazon-2018:
+    - mysql-server
+    - mysql-devel
+    - MySQL-python27
   Amazon:
     - mariadb-server
     - mariadb-devel
@@ -44,10 +48,10 @@ _mysql_service:
   default: mysql
   Alpine: mariadb
   Amazon: mariadb
+  Amazon-2018: mysqld
   Archlinux: mariadb
   Fedora: mariadb
   RedHat-7: mariadb
   RedHat: mysqld
 
-# mysql_service: "{{ _mysql_service[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_mysql_service[ansible_os_family] | default(_mysql_service['default'])) }}"
-mysql_service: "{{ _mysql_service[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_mysql_service[ansible_distribution] | default(_mysql_service[ansible_os_family] | default(_mysql_service['default']))) }}"
+mysql_service: "{{ _mysql_service[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_mysql_service[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_service[ansible_distribution] | default(_mysql_service[ansible_os_family] | default(_mysql_service['default'])))) }}"

@@ -11,7 +11,7 @@ galaxy_info:
   platforms:
     - name: Amazon
       versions:
-        - all
+        - Candidate
     - name: ArchLinux
       versions:
         - all
