@@ -5,7 +5,7 @@ galaxy_info:
   description: Install and configure mysql on your system.
   license: Apache-2.0
   company: none
-  min_ansible_version: 2.6
+  min_ansible_version: 2.8
   min_ansible_container_version: 0.2.0
 
   platforms:
