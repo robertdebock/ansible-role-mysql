@@ -40,7 +40,6 @@ galaxy_info:
     - installer
     - package
     - centos
-    - debian
     - fedora
     - rhel
     - ubuntu
