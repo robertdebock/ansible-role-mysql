@@ -39,7 +39,6 @@ galaxy_info:
     - database
     - installer
     - package
-    - alpine
     - centos
     - debian
     - fedora
