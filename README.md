@@ -17,18 +17,16 @@ This example is taken from `molecule/resources/playbook.yml` and is tested on ea
   become: yes
   gather_facts: yes
 
-  vars:
-    mysql_databases:
-      - name: my_db
-        encoding: utf8
-        collation: utf8_bin
-    mysql_users:
-      - name: my_user
-        password: my_pass
-        priv: "my_db.*:ALL"
-
   roles:
-    - robertdebock.mysql
+    - role: robertdebock.mysql
+      mysql_databases:
+        - name: my_db
+          encoding: utf8
+          collation: utf8_bin
+      mysql_users:
+        - name: my_user
+          password: my_pass
+          priv: "my_db.*:ALL"
 ```
 
 The machine you are running this on, may need to be prepared, I use this playbook to ensure everything is in place to let the role work.
@@ -40,7 +38,7 @@ The machine you are running this on, may need to be prepared, I use this playboo
   gather_facts: no
 
   roles:
-    - robertdebock.bootstrap
+    - role: robertdebock.bootstrap
 ```
 
 
@@ -83,7 +81,6 @@ The following roles can be installed to ensure all requirements are met, using `
 ```yaml
 ---
 - robertdebock.bootstrap
-- robertdebock.buildtools
 
 ```
 
