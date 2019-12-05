@@ -127,7 +127,6 @@ Some variarations of the build matrix do not work. These are the variations and 
 | amazonlinux:1 | /etc/init.d/mysqld: line 16: /etc/sysconfig/network: No such file or directory |
 
 
-
 Testing
 -------
 
