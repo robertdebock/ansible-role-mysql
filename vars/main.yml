@@ -18,6 +18,10 @@ _mysql_packages:
     - MySQL-python
   Archlinux:
     - mariadb
+  RedHat-7:
+    - mariadb-devel
+    - mariadb-server
+    - MySQL-python
   CentOS-7:
     - mariadb-devel
     - mariadb-server
