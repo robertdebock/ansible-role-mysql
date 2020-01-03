@@ -1,0 +1,29 @@
+---
+- name: Verify
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - role: ansible-role-mysql
+      mysql_databases:
+        - name: my_db
+          encoding: utf8
+          collation: utf8_bin
+      mysql_users:
+        - name: my_user
+          password: my_pass
+          priv: "my_db.*:ALL"
+
+  tasks:
+    - name: dump a table
+      mysql_db:
+        name: my_db
+        state: dump
+        target: /tmp/my_db.sql
+
+    - name: import a table
+      mysql_db:
+        name: my_db
+        state: import
+        target: /tmp/my_db.sql

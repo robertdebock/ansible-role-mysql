@@ -21,14 +21,6 @@ This example is taken from `molecule/resources/playbook.yml` and is tested on ea
 
   roles:
     - role: robertdebock.mysql
-      mysql_databases:
-        - name: my_db
-          encoding: utf8
-          collation: utf8_bin
-      mysql_users:
-        - name: my_user
-          password: my_pass
-          priv: "my_db.*:ALL"
 ```
 
 The machine you are running this on, may need to be prepared, I use this playbook to ensure everything is in place to let the role work.
@@ -43,6 +35,38 @@ The machine you are running this on, may need to be prepared, I use this playboo
     - role: robertdebock.bootstrap
 ```
 
+After running this role, this playbook runs to verify that everything works, this may be a good example how you can use this role.
+```yaml
+---
+- name: Verify
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - role: robertdebock.mysql
+      mysql_databases:
+        - name: my_db
+          encoding: utf8
+          collation: utf8_bin
+      mysql_users:
+        - name: my_user
+          password: my_pass
+          priv: "my_db.*:ALL"
+
+  tasks:
+    - name: dump a table
+      mysql_db:
+        name: my_db
+        state: dump
+        target: /tmp/my_db.sql
+
+    - name: import a table
+      mysql_db:
+        name: my_db
+        state: import
+        target: /tmp/my_db.sql
+```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
 
