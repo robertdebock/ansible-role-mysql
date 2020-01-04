@@ -16,8 +16,6 @@ _mysql_packages:
     - mariadb-server
     - mariadb-devel
     - MySQL-python
-  Archlinux:
-    - mariadb
   RedHat-7:
     - mariadb-devel
     - mariadb-server
@@ -53,7 +51,6 @@ _mysql_service:
   Alpine: mariadb
   Amazon: mariadb
   Amazon-2018: mysqld
-  Archlinux: mariadb
   Fedora: mariadb
   RedHat-7: mariadb
   RedHat: mysqld
