@@ -58,14 +58,20 @@
     - name: show systemctl
       debug:
         msg: "{{ systemctl }}"
-    - name: collect error.log
-      command: cat /var/log/mysql/error.log
+    - name: find logs
+      find:
+        path: /var/log/mysql
+      register: find
+    - name: collect logs
+      command: cat {{ item.path }}
       args:
         creates: nothing
-      register: error_log
-    - name: show error.log
+      register: logs
+      loop: "{{ find.files }}"
+    - name: show log
       debug:
-        msg: "{{ error_log }}"
+        msg: "{{ item }}"
+      loop: "{{ logs.results }}"
 
 - name: create databases
   mysql_db:
