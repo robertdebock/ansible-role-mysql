@@ -39,6 +39,14 @@
         state: started
         enabled: yes
   rescue:
+    - name: collect journalctl
+      command: journalctl -xe
+      args:
+        creates: nothing
+      register: journalctl
+    - name: show journalctl
+      debug:
+        msg: "{{ journalctl }}"
     - name: collect systemctl
       command: systemctl status {{ mysql_service }}
       args:
@@ -50,14 +58,15 @@
     - name: show systemctl
       debug:
         msg: "{{ systemctl }}"
-    - name: collect journalctl
-      command: journalctl -xe
+    - name: collect error.log
+      command: cat /var/log/mysql/error.log
       args:
         creates: nothing
-      register: journalctl
-    - name: show journalctl
+      register: error_log
+    - name: show error.log
       debug:
-        msg: "{{ journalctl }}"
+        msg: "{{ error_log }}"
+    
 
 - name: create databases
   mysql_db:
