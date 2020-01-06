@@ -32,10 +32,31 @@
     - ansible_distribution == "Archlinux"
 
 - name: start and enable mysql
-  service:
-    name: "{{ mysql_service }}"
-    state: started
-    enabled: yes
+  block:
+    - name: start and enable mysql
+      service:
+        name: "{{ mysql_service }}"
+        state: started
+        enabled: yes
+  rescue:
+    - name: collect systemctl
+      command: systemctl status {{ mysql_service }}
+      args:
+        creates: nothing
+      register: systemctl
+      tags:
+        - skip_ansible_lint
+    - name: show systemctl
+      debug:
+        msg: "{{ systemctl }}"
+    - name: collect journalctl
+      command: journalctl -xe
+      args:
+        creates: nothing
+      register: journalctl
+    - name: show journalctl
+      debug:
+        msg: "{{ journalctl }}"
 
 - name: create databases
   mysql_db:
