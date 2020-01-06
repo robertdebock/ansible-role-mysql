@@ -46,6 +46,7 @@
       register: systemctl
       tags:
         - skip_ansible_lint
+      failed_when: no
     - name: show systemctl
       debug:
         msg: "{{ systemctl }}"
