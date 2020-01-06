@@ -38,7 +38,7 @@
         name: "{{ mysql_service }}"
         state: started
         enabled: yes
-  rescue:
+  always:
     - name: collect journalctl
       command: journalctl -xe
       args:
@@ -62,6 +62,9 @@
       find:
         path: /var/log/mysql
       register: find
+    - name: show found
+      debug:
+        msg: "{{ find }}"
     - name: collect logs
       command: cat {{ item.path }}
       args:
