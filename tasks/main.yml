@@ -44,6 +44,7 @@
       args:
         creates: nothing
       register: journalctl
+      changed_when: no
     - name: show journalctl
       debug:
         msg: "{{ journalctl }}"
@@ -55,6 +56,7 @@
       tags:
         - skip_ansible_lint
       failed_when: no
+      changed_when: no
     - name: show systemctl
       debug:
         msg: "{{ systemctl }}"
@@ -71,6 +73,7 @@
         creates: nothing
       register: logs
       loop: "{{ find.files }}"
+      changed_when: no
     - name: show log
       debug:
         msg: "{{ item }}"

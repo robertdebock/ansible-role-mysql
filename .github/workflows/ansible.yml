@@ -108,6 +108,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
+      - name: disable apparmor
+        runs: systemctl stop apparmor
       - name: molecule
         uses: robertdebock/molecule-action@1.1.1
         with:
