@@ -43,6 +43,7 @@
     state: present
     encoding: "{{ item.encoding | default(omit) }}"
     collation: "{{ item.collation | default(omit) }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
   with_items:
     - "{{ mysql_databases }}"
   loop_control:
@@ -58,6 +59,7 @@
     priv: "{{ item.priv | default(omit) }}"
     host: "{{ item.host | default(omit) }}"
     update_password: on_create
+    login_unix_socket: /var/run/mysqld/mysqld.sock
   with_items:
     - "{{ mysql_users }}"
   loop_control:
