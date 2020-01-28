@@ -14,16 +14,3 @@
         - name: my_user
           password: my_pass
           priv: "my_db.*:ALL"
-
-  tasks:
-    - name: dump a table
-      mysql_db:
-        name: my_db
-        state: dump
-        target: /tmp/my_db.sql
-
-    - name: import a table
-      mysql_db:
-        name: my_db
-        state: import
-        target: /tmp/my_db.sql
