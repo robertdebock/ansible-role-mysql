@@ -34,7 +34,8 @@
 - name: create databases
   mysql_db:
     name: "{{ item.name }}"
-    state: present
+    state: "{{ item.state | default('present') }}"
+    target: "{{ item.target | default(omit) }}"
     encoding: "{{ item.encoding | default(omit) }}"
     collation: "{{ item.collation | default(omit) }}"
     login_unix_socket: "{{ mysql_socket }}"

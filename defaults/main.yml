@@ -8,6 +8,8 @@ mysql_bind_address: 127.0.0.1
 # mysql_databases:
 #   - name: firstdb
 #   - name: seconddb
+#     state: dump
+#     target: /tmp/seconddb.mysql
 #
 # mysql_users:
 #   - name: firstuser
