@@ -49,23 +49,13 @@ After running this role, this playbook runs to verify that everything works, thi
         - name: my_db
           encoding: utf8
           collation: utf8_bin
+        - name: my_db
+          state: dump
+          target: /tmp/my_db.mysql
       mysql_users:
         - name: my_user
           password: my_pass
           priv: "my_db.*:ALL"
-
-  tasks:
-    - name: dump a table
-      mysql_db:
-        name: my_db
-        state: dump
-        target: /tmp/my_db.sql
-
-    - name: import a table
-      mysql_db:
-        name: my_db
-        state: import
-        target: /tmp/my_db.sql
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -85,6 +75,8 @@ mysql_bind_address: 127.0.0.1
 # mysql_databases:
 #   - name: firstdb
 #   - name: seconddb
+#     state: dump
+#     target: /tmp/seconddb.mysql
 #
 # mysql_users:
 #   - name: firstuser
