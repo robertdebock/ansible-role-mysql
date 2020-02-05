@@ -39,8 +39,7 @@
     encoding: "{{ item.encoding | default(omit) }}"
     collation: "{{ item.collation | default(omit) }}"
     login_unix_socket: "{{ mysql_socket }}"
-  with_items:
-    - "{{ mysql_databases }}"
+  loop: "{{ mysql_databases }}"
   loop_control:
     label: "{{ item.name }}"
   when:
@@ -55,8 +54,7 @@
     host: "{{ item.host | default(omit) }}"
     update_password: on_create
     login_unix_socket: "{{ mysql_socket }}"
-  with_items:
-    - "{{ mysql_users }}"
+  loop: "{{ mysql_users }}"
   loop_control:
     label: "{{ item.name }}"
   when:
