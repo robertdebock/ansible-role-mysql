@@ -51,6 +51,7 @@
       args:
         creates: nothing
       register: systemctl
+      failed_when: false
       tags:
         - skip_ansible_lint
 
