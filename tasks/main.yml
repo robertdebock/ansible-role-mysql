@@ -25,11 +25,42 @@
     - ansible_distribution == "Alpine" or
       ansible_distribution == "Archlinux"
 
-- name: start and enable mysql
-  service:
-    name: "{{ mysql_service }}"
-    state: started
-    enabled: yes
+# - name: start and enable mysql
+#   service:
+#     name: "{{ mysql_service }}"
+#     state: started
+#     enabled: yes
+
+- name: debug
+  block:
+    - name: start and enable mysql
+      service:
+        name: "{{ mysql_service }}"
+        state: started
+        enabled: yes
+      register: state
+  rescue:
+    - name: journalctl -xe
+      command: journalxtl -xe
+      args:
+        creates: nothing
+      register: journalctl
+
+    - name: systemctl status
+      command: systemctl status {{ mysql_service }}
+      args:
+        creates: nothing
+      register: systemctl
+      tags:
+        - skip_ansible_lint
+
+    - name: show journalxtl
+      debug:
+        var: journalctl
+
+    - name: show systemctl
+      debug:
+        var: systemctl
 
 - name: create databases
   mysql_db:
