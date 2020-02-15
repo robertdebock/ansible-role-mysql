@@ -41,7 +41,7 @@
       register: state
   rescue:
     - name: journalctl -xe
-      command: journalxtl -xe
+      command: journalctl -xe
       args:
         creates: nothing
       register: journalctl
