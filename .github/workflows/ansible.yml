@@ -57,10 +57,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: disable apparmor for mysql
-        run: sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
-      - name: parse apparmor for mysql
-        run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
+      # - name: disable apparmor for mysql
+      #   run: sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
+      # - name: parse apparmor for mysql
+      #   run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
+      - name: stop apparmor
+        run: sudo /etc/init.d/apparmor stop
+      - name: teardown apparmor
+        run: sudo /etc/init.d/apparmor teardown
       - name: molecule
         uses: robertdebock/molecule-action@1.2.8
         with:
