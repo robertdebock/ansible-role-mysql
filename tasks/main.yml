@@ -40,19 +40,19 @@
         enabled: yes
       register: state
   rescue:
-    - name: read /var/log/syslog
-      slurp:
-        src: /var/log/syslog
-      register: syslog
+    # - name: read /var/log/syslog
+    #   slurp:
+    #     src: /var/log/syslog
+    #   register: syslog
 
     - name: read /var/log/kern.log
       slurp:
         src: /var/log/kern.log
       register: kern_log
 
-    - name: show syslog
-      debug:
-        msg: "{{ syslog['content'] | b64decode }}"
+    # - name: show syslog
+    #   debug:
+    #     msg: "{{ syslog['content'] | b64decode }}"
 
     - name: show kern.log
       debug:
