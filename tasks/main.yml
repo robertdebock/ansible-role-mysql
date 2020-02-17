@@ -1,5 +1,14 @@
 ---
 # tasks file for mysql
+- name: check mysql
+  stat:
+    path: /var/lib/mysql
+  register mysql_check_mysql
+
+- name: show shit
+  debug:
+    msg: "{{ mysql_check_mysql.stat }}"
+
 - name: install mysql
   package:
     name: "{{ mysql_packages }}"

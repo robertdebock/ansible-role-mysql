@@ -65,6 +65,8 @@ jobs:
         run: sudo /etc/init.d/apparmor stop
       - name: teardown apparmor
         run: sudo /etc/init.d/apparmor teardown
+      - name: check mysql
+        run: sudo ls -l /var/lib/mysql
       - name: molecule
         uses: robertdebock/molecule-action@1.2.8
         with:
