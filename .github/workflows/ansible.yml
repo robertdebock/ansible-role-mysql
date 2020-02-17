@@ -57,6 +57,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
+      - name: install apparmor-utils
+        run: sudo apt-get -y install apparmor-utils
       - name: put mysql in complain mode
         run: sudo aa-complain /usr/sbin/mysqld
       - name: molecule
