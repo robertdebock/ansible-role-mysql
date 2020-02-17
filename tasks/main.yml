@@ -25,61 +25,11 @@
     - ansible_distribution == "Alpine" or
       ansible_distribution == "Archlinux"
 
-# - name: start and enable mysql
-#   service:
-#     name: "{{ mysql_service }}"
-#     state: started
-#     enabled: yes
-
-- name: debug
-  block:
-    - name: start and enable mysql
-      service:
-        name: "{{ mysql_service }}"
-        state: started
-        enabled: yes
-      register: state
-  always:
-    # - name: read /var/log/syslog
-    #   slurp:
-    #     src: /var/log/syslog
-    #   register: syslog
-
-    - name: read /var/log/mysql/error.log
-      slurp:
-        src: /var/log/mysql/error.log
-      register: mysql_log
-
-    # - name: show syslog
-    #   debug:
-    #     msg: "{{ syslog['content'] | b64decode }}"
-
-    - name: show mysql.log
-      debug:
-        msg: "{{ mysql_log['content'] | b64decode }}"
-
-#     - name: journalctl -xe
-#       command: journalctl -xe
-#       args:
-#         creates: nothing
-#       register: journalctl
-#
-#     - name: systemctl status
-#       command: systemctl status {{ mysql_service }}
-#       args:
-#         creates: nothing
-#       register: systemctl
-#       failed_when: false
-#       tags:
-#         - skip_ansible_lint
-#
-#     - name: show journalxtl
-#       debug:
-#         var: journalctl
-#
-#     - name: show systemctl
-#       debug:
-#         var: systemctl
+- name: start and enable mysql
+  service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: yes
 
 - name: create databases
   mysql_db:
