@@ -1,14 +1,5 @@
 ---
 # tasks file for mysql
-- name: check mysql
-  stat:
-    path: /var/lib/mysql
-  register: mysql_check_mysql
-
-- name: show shit
-  debug:
-    msg: "{{ mysql_check_mysql.stat }}"
-
 - name: install mysql
   package:
     name: "{{ mysql_packages }}"
@@ -17,14 +8,14 @@
   until: mysql_install_mysql is succeeded
   retries: 3
 
-- name: configure mysql
-  ini_file:
-    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
-    section: mysqld
-    option: bind-address
-    value: "{{ mysql_bind_address }}"
-  notify:
-    - restart mysql server
+#- name: configure mysql
+#  ini_file:
+#    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+#    section: mysqld
+#    option: bind-address
+#    value: "{{ mysql_bind_address }}"
+#  notify:
+#    - restart mysql server
 
 - name: initialize mysql
   command: "{{ mysql_initialize_command }}"
