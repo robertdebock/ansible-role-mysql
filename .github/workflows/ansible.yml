@@ -60,7 +60,7 @@ jobs:
       - name: show packages
         run: sudo dpkg -l
       - name: erase mysql
-        run: sudo apt-get remove mariadb-server
+        run: sudo apt-get remove mariadb-server libmysqlclient-dev libmysqlclient20 mysql-client mysql-client-5.7 mysql-client-core-5.7 mysql-common mysql-server mysql-server-5.7 mysql-server-core-5.7
       - name: stop apparmor
         run: sudo /etc/init.d/apparmor stop
       - name: teardown apparmor
