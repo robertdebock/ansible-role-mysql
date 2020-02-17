@@ -39,24 +39,24 @@
         state: started
         enabled: yes
       register: state
-  rescue:
+  always:
     # - name: read /var/log/syslog
     #   slurp:
     #     src: /var/log/syslog
     #   register: syslog
 
-    - name: read /var/log/kern.log
+    - name: read /var/log/mysql/error.log
       slurp:
-        src: /var/log/kern.log
-      register: kern_log
+        src: /var/log/mysql/error.log
+      register: mysql_log
 
     # - name: show syslog
     #   debug:
     #     msg: "{{ syslog['content'] | b64decode }}"
 
-    - name: show kern.log
+    - name: show mysql.log
       debug:
-        msg: "{{ kern_log['content'] | b64decode }}"
+        msg: "{{ mysql_log['content'] | b64decode }}"
 
 #     - name: journalctl -xe
 #       command: journalctl -xe
