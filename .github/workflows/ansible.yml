@@ -57,16 +57,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: show packages
-        run: sudo dpkg -l
-      - name: erase mysql
-        run: sudo apt-get remove mariadb-server libmysqlclient-dev libmysqlclient20 mysql-client mysql-client-5.7 mysql-client-core-5.7 mysql-common mysql-server mysql-server-5.7 mysql-server-core-5.7
-      - name: stop apparmor
-        run: sudo /etc/init.d/apparmor stop
-      - name: teardown apparmor
-        run: sudo /etc/init.d/apparmor teardown
-      - name: check mysql
-        run: sudo ls -l /var/lib/mysql
+      - name: disable apparmor for mysql
+        run: sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
+      - name: parse apparmor for mysql
+        run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
       - name: molecule
         uses: robertdebock/molecule-action@1.2.8
         with:

@@ -8,14 +8,14 @@
   until: mysql_install_mysql is succeeded
   retries: 3
 
-# - name: configure mysql
-#   ini_file:
-#     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
-#     section: mysqld
-#     option: bind-address
-#     value: "{{ mysql_bind_address }}"
-#   notify:
-#     - restart mysql server
+- name: configure mysql
+  ini_file:
+    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+    section: mysqld
+    option: bind-address
+    value: "{{ mysql_bind_address }}"
+  notify:
+    - restart mysql server
 
 - name: initialize mysql
   command: "{{ mysql_initialize_command }}"
@@ -40,28 +40,46 @@
         enabled: yes
       register: state
   rescue:
-    - name: journalctl -xe
-      command: journalctl -xe
-      args:
-        creates: nothing
-      register: journalctl
+    - name: read /var/log/syslog
+      slurp:
+        src: /var/log/syslog
+      register: syslog
 
-    - name: systemctl status
-      command: systemctl status {{ mysql_service }}
-      args:
-        creates: nothing
-      register: systemctl
-      failed_when: false
-      tags:
-        - skip_ansible_lint
+    - name: read /var/log/kern.log
+      slurp:
+        src: /var/log/kern.log
+      register: kern_log
 
-    - name: show journalxtl
+    - name: show syslog
       debug:
-        var: journalctl
+        msg: "{{ syslog['content'] | b64decode }}"
 
-    - name: show systemctl
+    - name: show kern.log
       debug:
-        var: systemctl
+        msg: "{{ kern_log['content'] | b64decode }}"
+
+#     - name: journalctl -xe
+#       command: journalctl -xe
+#       args:
+#         creates: nothing
+#       register: journalctl
+# 
+#     - name: systemctl status
+#       command: systemctl status {{ mysql_service }}
+#       args:
+#         creates: nothing
+#       register: systemctl
+#       failed_when: false
+#       tags:
+#         - skip_ansible_lint
+# 
+#     - name: show journalxtl
+#       debug:
+#         var: journalctl
+# 
+#     - name: show systemctl
+#       debug:
+#         var: systemctl
 
 - name: create databases
   mysql_db:
