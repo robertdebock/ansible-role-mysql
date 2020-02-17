@@ -63,7 +63,7 @@
 #       args:
 #         creates: nothing
 #       register: journalctl
-# 
+#
 #     - name: systemctl status
 #       command: systemctl status {{ mysql_service }}
 #       args:
@@ -72,11 +72,11 @@
 #       failed_when: false
 #       tags:
 #         - skip_ansible_lint
-# 
+#
 #     - name: show journalxtl
 #       debug:
 #         var: journalctl
-# 
+#
 #     - name: show systemctl
 #       debug:
 #         var: systemctl
