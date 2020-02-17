@@ -8,14 +8,14 @@
   until: mysql_install_mysql is succeeded
   retries: 3
 
-#- name: configure mysql
-#  ini_file:
-#    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
-#    section: mysqld
-#    option: bind-address
-#    value: "{{ mysql_bind_address }}"
-#  notify:
-#    - restart mysql server
+# - name: configure mysql
+#   ini_file:
+#     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+#     section: mysqld
+#     option: bind-address
+#     value: "{{ mysql_bind_address }}"
+#   notify:
+#     - restart mysql server
 
 - name: initialize mysql
   command: "{{ mysql_initialize_command }}"
