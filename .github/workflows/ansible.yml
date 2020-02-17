@@ -57,6 +57,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
+      - name: show apparmor
+        run: sudo cat /etc/apparmor.d/usr.sbin.mysqld
       - name: disable apparmor for mysql
         run: sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
       - name: parse apparmor for mysql
@@ -69,3 +71,6 @@ jobs:
           options: "--parallel all"
         env:
           TOX_PARALLEL_NO_SPINNER: 1
+      - name: show logs
+        run: sudo cat /var/log/system.log /var/log/kern.log /var/log/audit/audit.log
+        if: always()
