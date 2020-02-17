@@ -3,7 +3,7 @@
 - name: check mysql
   stat:
     path: /var/lib/mysql
-  register mysql_check_mysql
+  register: mysql_check_mysql
 
 - name: show shit
   debug:
