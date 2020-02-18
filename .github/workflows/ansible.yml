@@ -60,7 +60,7 @@ jobs:
       - name: read apparmor profile usr.sbin.mysqld
         run: sudo cat /etc/apparmor.d/usr.sbin.mysqld
       - name: add permissions for apparmor profle usr.sbin.mysqld
-        run: sudo echo "  /etc/mysql/** r," >> /etc/apparmor.d/usr.sbin.mysqld
+        run: echo "  /etc/mysql/** r," | sudo tee -a /etc/apparmor.d/usr.sbin.mysqld
       - name: parse apparmor for mysql
         run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
       - name: molecule
