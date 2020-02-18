@@ -59,6 +59,8 @@ jobs:
           path: "${{ github.repository }}"
       - name: remove mysql
         run: sudo apt-get remove -y --purge mysql-client libmysqlclient-dev mysql-server mssql-tools unixodbc-dev
+      - name: autoremove
+        run: sudo apt autoremove
       - name: molecule
         uses: robertdebock/molecule-action@1.2.8
         with:
