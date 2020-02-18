@@ -17,16 +17,6 @@
   notify:
     - restart mysql server
 
-- name: remove protective settings from systemd
-  lineinfile:
-    path: /etc/systemd/system/{{ mysql_service }}
-    regexp: "^{{ item }}"
-    state: absent
-  loop:
-    - "ProtectSystem=full"
-    - "PrivateDevices=true"
-    - "ProtectHome=true"
-
 - name: initialize mysql
   command: "{{ mysql_initialize_command }}"
   args:
@@ -34,16 +24,6 @@
   when:
     - ansible_distribution == "Alpine" or
       ansible_distribution == "Archlinux"
-
-- name: bla
-  command: /usr/sbin/mysqld
-  args:
-    creates: nothing
-  register: something
-
-- name: show something
-  debug:
-    msg: "{{ something }}"
 
 - name: start and enable mysql
   service:
