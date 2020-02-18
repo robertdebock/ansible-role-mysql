@@ -57,12 +57,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: stop apparmor
-        run: sudo systemctl stop apparmor
-      - name: remove apparmor service
-        run: sudo update-rc.d -f apparmor remove
-      - name: remove apparmor
-        run: sudo apt-get remove -y --purge apparmor apparmor-utils
+      - name: remove mysql
+        run: sudo apt-get remove -y --purge mysql-client libmysqlclient-dev mysql-server mssql-tools unixodbc-dev
       - name: molecule
         uses: robertdebock/molecule-action@1.2.8
         with:
