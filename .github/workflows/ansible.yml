@@ -59,8 +59,16 @@ jobs:
           path: "${{ github.repository }}"
       - name: read apparmor profile usr.sbin.mysqld
         run: sudo cat /etc/apparmor.d/usr.sbin.mysqld
+      - name: remove TOK close
+        run: sed -i '$ d' /etc/apparmor.d/usr.sbin.mysqld
+      - name: read apparmor profile usr.sbin.mysqld
+        run: sudo cat /etc/apparmor.d/usr.sbin.mysqld
       - name: add permissions for apparmor profle usr.sbin.mysqld
         run: echo "  /etc/mysql/** r," | sudo tee -a /etc/apparmor.d/usr.sbin.mysqld
+      - name: add TOK close
+        run: echo "}" | sudo tee -a /etc/apparmor.d/usr.sbin.mysqld
+      - name: read apparmor profile usr.sbin.mysqld
+        run: sudo cat /etc/apparmor.d/usr.sbin.mysqld
       - name: parse apparmor for mysql
         run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
       - name: molecule
