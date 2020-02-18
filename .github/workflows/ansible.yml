@@ -72,7 +72,7 @@ jobs:
       # - name: parse apparmor for mysql
       #   run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
       - name: allow mysql to read configurations
-        run: echo "/etc/mysql/** r," | sudo tee -a /etc/apparmor.d/local/usr.sbin.mysqld && sudo cat /etc/apparmor.d/usr.sbin.mysqld | sudo apparmor_parser -r
+        run: echo "/etc/mysql/** r," | sudo tee -a /etc/apparmor.d/local/usr.sbin.mysqld && sudo systemctl reload apparmor
       - name: molecule
         uses: robertdebock/molecule-action@1.2.8
         with:
