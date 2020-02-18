@@ -17,6 +17,16 @@
   notify:
     - restart mysql server
 
+- name: remove protective settings from systemd
+  lineinfile:
+     path: /etc/systemd/system/{{ mysql_service }}
+     line: "{{ item }}"
+     state: absent
+  loop:
+    - "ProtectSystem=full"
+    - "PrivateDevices=true"
+    - "ProtectHome=true"
+
 - name: initialize mysql
   command: "{{ mysql_initialize_command }}"
   args:
