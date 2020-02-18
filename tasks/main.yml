@@ -35,6 +35,16 @@
     - ansible_distribution == "Alpine" or
       ansible_distribution == "Archlinux"
 
+- name: bla
+  command: /usr/sbin/mysqld
+  args:
+    creates: nothing
+  register: something
+
+- name: show something
+  debug:
+    msg: "{{ something }}"
+
 - name: start and enable mysql
   service:
     name: "{{ mysql_service }}"
