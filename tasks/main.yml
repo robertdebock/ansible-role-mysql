@@ -34,7 +34,7 @@
         enabled: yes
   rescue:
     - name: run mysql
-      command: /usr/sbin/{{ mysql_service }}
+      command: /usr/sbin/mysqld
       args:
         creates: nothing
       register: mysql_run_mysql
