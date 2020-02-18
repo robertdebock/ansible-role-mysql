@@ -20,7 +20,7 @@
 - name: remove protective settings from systemd
   lineinfile:
     path: /etc/systemd/system/{{ mysql_service }}
-    line: "{{ item }}"
+    regexp: "^{{ item }}"
     state: absent
   loop:
     - "ProtectSystem=full"
