@@ -57,10 +57,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: install apparmor-utils
-        run: sudo apt-get -y install apparmor-utils
-      - name: put mysql in complain mode
-        run: sudo aa-complain /usr/sbin/mysqld
+      - name: read apparmor profile usr.sbin.mysqld
+        run: sudo cat /etc/apparmor.d/usr.sbin.mysqld
+      - name: add permissions for apparmor profle usr.sbin.mysqld
+        run: sudo echo "  /etc/mysql/** r," >> /etc/apparmor.d/usr.sbin.mysqld
+      - name: parse apparmor for mysql
+        run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
       - name: molecule
         uses: robertdebock/molecule-action@1.2.8
         with:
