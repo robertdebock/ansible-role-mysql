@@ -25,11 +25,22 @@
     - ansible_distribution == "Alpine" or
       ansible_distribution == "Archlinux"
 
-- name: start and enable mysql
-  service:
-    name: "{{ mysql_service }}"
-    state: started
-    enabled: yes
+- name: run mysql
+  block:
+    - name: start and enable mysql
+      service:
+        name: "{{ mysql_service }}"
+        state: started
+        enabled: yes
+  rescue:
+    - name: run mysql
+      command: /usr/sbin/{{ mysql_service }}
+      args:
+        creates: nothing
+      register: mysql_run_mysql
+    - name: show output of run mysql
+      debug:
+        msg: "{{ mysql_run_mysql }}"
 
 - name: create databases
   mysql_db:
