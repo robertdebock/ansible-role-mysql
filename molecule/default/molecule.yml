@@ -16,6 +16,7 @@ platforms:
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /tmp/etc:/etc/mysql/conf.d
     privileged: yes
     pre_build_image: yes
 provisioner:
