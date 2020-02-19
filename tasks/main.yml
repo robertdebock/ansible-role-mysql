@@ -33,14 +33,17 @@
         state: started
         enabled: yes
   rescue:
-    - name: run mysql
-      command: /usr/sbin/mysqld
-      args:
-        creates: nothing
-      register: mysql_run_mysql
-    - name: show output of run mysql
+    - name: run debugging
+      command: "{{ item }}"
+      changed_when: no
+      loop:
+        - journalctl -xe
+        - systemctl status {{ mysql_service }}
+      register: mysql_debugging
+    - name: show journalctl and systemctl
       debug:
-        msg: "{{ mysql_run_mysql }}"
+        var: "{{ item }}"
+      loop: "{{ mysql_debugging }}"
 
 - name: create databases
   mysql_db:
