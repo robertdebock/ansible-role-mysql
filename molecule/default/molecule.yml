@@ -6,8 +6,9 @@ dependency:
   name: galaxy
   options:
     role-file: requirements.yml
-lint:
-  name: yamllint
+lint: |
+  yamllint molecule/default/converge.yml
+  ansible-lint molecule/default/converge.yml
 driver:
   name: docker
 platforms:
@@ -16,7 +17,6 @@ platforms:
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /tmp/etc:/etc/mysql/conf.d
     privileged: yes
     pre_build_image: yes
 provisioner:
@@ -27,8 +27,5 @@ provisioner:
       bin_ansible_callbacks: yes
 verifier:
   name: ansible
-  lint:
-    name: ansible-lint
-    enabled: yes
 scenario:
   name: default
