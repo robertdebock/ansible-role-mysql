@@ -70,6 +70,9 @@ These variables are set in `defaults/main.yml`:
 # The address mysql should bind to.
 mysql_bind_address: 127.0.0.1
 
+# The password to set for the root user. Also stored in my.cnf
+mysql_root_password: "s3Cur31t4."
+
 # This role can populate databases and users, see below.
 # mysql_databases:
 #   - name: firstdb
