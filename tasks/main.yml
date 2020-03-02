@@ -45,23 +45,23 @@
         var: "{{ item }}"
       loop: "{{ mysql_debugging }}"
 
-- name: set mysql root user password
-  mysql_user:
-    name: root
-    password: "{{ mysql_root_password }}"
-    priv: '*.*:ALL,GRANT'
-    check_implicit_admin: true
-  notify:
-    - restart mysql server
-
-- name: place /root/.my.cnf
-  template:
-    src:  my.cnf.j2
-    dest: /root/.my.cnf
-    owner: root
-    mode: 0600
-  notify:
-    - restart mysql server
+# - name: set mysql root user password
+#   mysql_user:
+#     name: root
+#     password: "{{ mysql_root_password }}"
+#     # priv: '*.*:ALL,GRANT'
+#     check_implicit_admin: true
+#   notify:
+#     - restart mysql server
+# 
+# - name: place /root/.my.cnf
+#   template:
+#     src:  my.cnf.j2
+#     dest: /root/.my.cnf
+#     owner: root
+#     mode: 0600
+#   notify:
+#     - restart mysql server
 
 - name: create databases
   mysql_db:
