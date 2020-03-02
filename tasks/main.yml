@@ -33,6 +33,14 @@
         state: started
         enabled: yes
   rescue:
+    - name: test startpre
+      shell: set -o pipefail ; {{ item }}
+      loop: "{{ mysql_startpre }}"
+      register: mysql_startpre
+    - name: show startpre output
+      debug:
+        var: "{{ item }}"
+      loop: "{{ mysql_startpre }}"
     - name: run debugging
       command: "{{ item }}"
       changed_when: no
