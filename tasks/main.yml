@@ -33,14 +33,10 @@
         state: started
         enabled: yes
   rescue:
-    - name: read error.log
-      slurp:
-        src: /var/log/mysql/error.log
-      register: mysql_read_error_log
-
-    - name: show error.log
-      debug:
-        msg: "{{ mysql_read_error_log['content'] | b64decode }}"
+    - name: start mysql
+      command: /usr/sbin/mysqld
+      args:
+        creates: nothing
 
 # - name: set mysql root user password
 #   mysql_user:
