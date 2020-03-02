@@ -34,7 +34,11 @@
         enabled: yes
   rescue:
     - name: test startpre
-      shell: set -o pipefail ; {{ item }}
+      shell: |
+        set -o pipefail
+        {{ item }}
+      args:
+        executable: /bin/bash
       loop: "{{ mysql_startpre }}"
       register: mysql_startpre
     - name: show startpre output
