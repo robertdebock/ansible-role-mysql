@@ -44,7 +44,7 @@
     - name: show startpre output
       debug:
         var: "{{ item }}"
-      loop: "{{ mysql_startpre }}"
+      loop: "{{ mysql_startpre.results }}"
     - name: run debugging
       command: "{{ item }}"
       changed_when: no
