@@ -33,30 +33,13 @@
         state: started
         enabled: yes
   rescue:
-    - name: test startpre
-      shell: |
-        set -o pipefail
-        {{ item }}
-      args:
-        executable: /bin/bash
-      loop: "{{ mysql_startpre }}"
-      register: mysql_startpre
-    - name: show startpre output
+    - name: read error.log
+      slurp:
+        src: /var/log/mysql/error.log
+      register: mysql_read_error_log
+    - name: show error.log
       debug:
-        var: "{{ item }}"
-      loop: "{{ mysql_startpre.results }}"
-    - name: run debugging
-      command: "{{ item }}"
-      changed_when: no
-      loop:
-        - journalctl -xe
-        - systemctl status {{ mysql_service }}
-      register: mysql_debugging
-    - name: show journalctl and systemctl
-      debug:
-        var: "{{ item }}"
-      loop: "{{ mysql_debugging }}"
-
+        var: "{{ mysql_read_error_log['content'] | b64decode }}"
 # - name: set mysql root user password
 #   mysql_user:
 #     name: root

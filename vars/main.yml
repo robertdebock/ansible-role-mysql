@@ -69,9 +69,3 @@ _mysql_socket:
   RedHat: /var/lib/mysql/mysql.sock
 
 mysql_socket: "{{ _mysql_socket[ansible_os_family] | default(_mysql_socket['default']) }}"
-
-# DEBUGGIN:
-mysql_startpre:
-  - /usr/bin/install -m 755 -o mysql -g root -d /var/run/mysqld
-  - /bin/sh -c "systemctl unset-environment _WSREP_START_POSITION"
-  - /bin/sh -c "[ ! -e /usr/bin/galera_recovery ] && VAR= || VAR=`/usr/bin/galera_recovery`; [ $? -eq 0 ] && systemctl set-environment _WSREP_START_POSITION=$VAR || exit 1"
