@@ -37,9 +37,11 @@
       slurp:
         src: /var/log/mysql/error.log
       register: mysql_read_error_log
+
     - name: show error.log
       debug:
-        var: "{{ mysql_read_error_log['content'] | b64decode }}"
+        msg: "{{ mysql_read_error_log['content'] | b64decode }}"
+
 # - name: set mysql root user password
 #   mysql_user:
 #     name: root
