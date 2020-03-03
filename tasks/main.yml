@@ -51,11 +51,17 @@
       poll: 0
 
     - name: check run mysqld
-      async_status:
-        jid: "{{ mysql_run_mysqld.ansible_job_id }}"
-      register: mysql_check_run_mysqld
-      until: mysql_check_run_mysqld is finished
-      retries: 30
+      block:
+        - name: check run
+          async_status:
+            jid: "{{ mysql_run_mysqld.ansible_job_id }}"
+          register: mysql_check_run_mysqld
+          until: mysql_check_run_mysqld is finished
+          retries: 30
+      rescue:
+        - name: show output
+          debug:
+            msg: "{{ mysql_run_mysqld }}"
 
 # - name: set mysql root user password
 #   mysql_user:
