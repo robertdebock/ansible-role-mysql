@@ -34,7 +34,7 @@
         enabled: yes
   rescue:
     - name: start mysql
-      command: /usr/sbin/mysqld
+      command: /usr/sbin/mysqld --debug --verbose
       args:
         creates: nothing
 
