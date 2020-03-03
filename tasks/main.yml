@@ -24,6 +24,11 @@
   notify:
     - restart mysql server
 
+- name: create socket directory
+  file:
+    path: "{{ mysql_socket | dirname }}"
+    state: directory
+
 - name: initialize mysql
   command: "{{ mysql_initialize_command }}"
   args:
