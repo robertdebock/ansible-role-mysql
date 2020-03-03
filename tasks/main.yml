@@ -33,8 +33,14 @@
         state: started
         enabled: yes
   rescue:
+    - name: comment log_error
+      replace:
+        path: /Users/mdtutorials/Documents/Ansible/Input.txt
+        regexp: 'log_error = (.+)'
+        replace: '#log_error = \1'
+      
     - name: start mysql
-      command: /usr/sbin/mysqld --debug --verbose
+      command: /usr/sbin/mysqld
       args:
         creates: nothing
 
