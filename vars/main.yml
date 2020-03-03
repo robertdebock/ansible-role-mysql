@@ -76,3 +76,14 @@ _mysql_pid:
   Debian: /tmp/mysql.pid
 
 mysql_pid: "{{ _mysql_pid[ansible_os_family] | default(_mysql_pid['default']) }}"
+
+mysql_configuration_options:
+  - option: bind-address
+    section: mysqld
+    value: "{{ mysql_bind_address }}"
+  - option: socket
+    section: mysqld
+    value: "{{ mysql_socket }}"
+  - option: pid-file
+    section: mysqld
+    value: "{{ mysql_pid }}"

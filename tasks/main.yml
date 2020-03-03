@@ -14,16 +14,9 @@
     section: "{{ item.section }}"
     option: "{{ item.option }}"
     value: "{{ item.value }}"
-  loop:
-    - option: bind-address
-      section: mysqld
-      value: "{{ mysql_bind_address }}"
-    - option: socket
-      section: mysqld
-      value: "{{ mysql_socket }}"
-    - option: pid-file
-      section: mysqld
-      value: "{{ mysql_pid }}"
+  loop: "{{ mysql_configuration_options }}"
+  loop_control:
+    label: "{{ item.option }}"
   notify:
     - restart mysql server
 
@@ -53,6 +46,16 @@
       command: /usr/sbin/mysqld
       args:
         creates: nothing
+      register: mysql_run_mysqld
+      async: 60
+      poll: 0
+
+    - name: check run mysqld
+      async_status:
+        jid: "{{ mysql_run_mysqld.ansible_job_id }}"
+      register: mysql_check_run_mysqld
+      until: mysql_check_run_mysqld is finished
+      retries: 30
 
 # - name: set mysql root user password
 #   mysql_user:
@@ -62,15 +65,13 @@
 #     check_implicit_admin: true
 #   notify:
 #     - restart mysql server
-# 
-# - name: place /root/.my.cnf
-#   template:
-#     src:  my.cnf.j2
-#     dest: /root/.my.cnf
-#     owner: root
-#     mode: 0600
-#   notify:
-#     - restart mysql server
+
+- name: place /root/.my.cnf
+  template:
+    src:  my.cnf.j2
+    dest: /root/.my.cnf
+    owner: root
+    mode: 0600
 
 - name: create databases
   mysql_db:

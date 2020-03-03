@@ -6,19 +6,3 @@ mysql_bind_address: 127.0.0.1
 
 # The password to set for the root user. Also stored in my.cnf
 mysql_root_password: "s3Cur31t4."
-
-# This role can populate databases and users, see below.
-# mysql_databases:
-#   - name: firstdb
-#   - name: seconddb
-#     state: dump
-#     target: /tmp/seconddb.mysql
-#
-# mysql_users:
-#   - name: firstuser
-#     password: MyPaSsWoRd
-#     priv: "firstdb.*:ALL"
-#     host: some.host.name
-#   - name: seconduser
-#     password: MyPaSsWoRd2
-#     priv: "seconddb.*:ALL"
