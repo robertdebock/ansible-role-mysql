@@ -21,18 +21,11 @@
     - option: socket
       section: mysqld
       value: "{{ mysql_socket }}"
+    - option: pid-file
+      section: mysqld
+      value: "{{ mysql_pid }}"
   notify:
     - restart mysql server
-
-- name: create socket directory
-  file:
-    path: "{{ mysql_socket | dirname }}"
-    state: directory
-    owner: mysql
-    mode: "0755"
-
-0 drwxr-xr-x.  2 mysql root   80 Mar  3 15:44 mysqld
-
 
 - name: initialize mysql
   command: "{{ mysql_initialize_command }}"

@@ -65,7 +65,14 @@ mysql_service: "{{ _mysql_service[ansible_os_family ~ '-' ~ ansible_distribution
 
 _mysql_socket:
   default: /var/run/mysql/mysql.sock
-  Debian: /var/run/mysqld/mysqld.sock
+  # Debian: /var/run/mysqld/mysqld.sock
+  Debian: /tmp/mysqld.sock
   RedHat: /var/lib/mysql/mysql.sock
 
 mysql_socket: "{{ _mysql_socket[ansible_os_family] | default(_mysql_socket['default']) }}"
+
+_mysql_pid:
+  default: /var/run/mysql/mysql.pid
+  Debian: /tmp/mysql.pid
+
+mysql_pid: "{{ _mysql_pid[ansible_os_family] | default(_mysql_pid['default']) }}"
