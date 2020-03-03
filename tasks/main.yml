@@ -35,11 +35,11 @@
   rescue:
     - name: comment log_error
       replace:
-        path: /Users/mdtutorials/Documents/Ansible/Input.txt
+        path: /etc/mysql/mariadb.conf.d/50-server.cnf
         regexp: 'log_error = (.+)'
         replace: '#log_error = \1'
       
-    - name: start mysql
+    - name: run mysqld
       command: /usr/sbin/mysqld
       args:
         creates: nothing
