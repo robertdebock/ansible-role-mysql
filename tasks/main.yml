@@ -43,29 +43,14 @@
         replace: '#log_error = \1'
       
     - name: run mysqld
-      shell: /usr/sbin/mysqld > /tmp/my_log
+      command: /usr/sbin/mysqld
       args:
         creates: nothing
       register: mysql_run_mysqld
-      async: 60
-      poll: 0
 
-    - name: check run mysqld
-      block:
-        - name: check run
-          async_status:
-            jid: "{{ mysql_run_mysqld.ansible_job_id }}"
-          register: mysql_check_run_mysqld
-          until: mysql_check_run_mysqld is finished
-          retries: 30
-      rescue:
-        - name: load my_log
-          slurp:
-            src: /tmp/my_log
-          register: mysql_load_my_log
-        - name: show output
-          debug:
-            msg: "{{ mysql_load_my_log['content'] | b64decode }}"
+    - name: show output
+      debug:
+        msg: "{{ mysql_run_mysqld.stdout }}"
 
 # - name: set mysql root user password
 #   mysql_user:
