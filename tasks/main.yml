@@ -36,21 +36,34 @@
         state: started
         enabled: yes
   rescue:
-    - name: comment log_error
-      replace:
-        path: /etc/mysql/mariadb.conf.d/50-server.cnf
-        regexp: 'log_error = (.+)'
-        replace: '#log_error = \1'
-      
-    - name: run mysqld
-      command: /usr/sbin/mysqld
-      args:
-        creates: nothing
-      register: mysql_run_mysqld
+    - name: collect troubleshooting information
+      command: "{{ item }}"
+      changed_when: no
+      loop:
+        - systemctl status {{ mysql_service }}
+        - journalctl -xe
+      register: mysql_collect_troubleshooting_information
 
-    - name: show output
+    - name: show troubleshooting information
       debug:
-        msg: "{{ mysql_run_mysqld.stdout }}"
+        msg: "{{ item }}"
+      loop: "{{ mysql_collect_troubleshooting_information.results }}"
+    
+    # - name: comment log_error
+    #   replace:
+    #     path: /etc/mysql/mariadb.conf.d/50-server.cnf
+    #     regexp: 'log_error = (.+)'
+    #     replace: '#log_error = \1'
+    #   
+    # - name: run mysqld
+    #   command: /usr/sbin/mysqld
+    #   args:
+    #     creates: nothing
+    #   register: mysql_run_mysqld
+
+    # - name: show output
+    #   debug:
+    #     msg: "{{ mysql_run_mysqld.stdout }}"
 
 # - name: set mysql root user password
 #   mysql_user:

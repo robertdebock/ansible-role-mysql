@@ -84,6 +84,6 @@ mysql_configuration_options:
   - option: socket
     section: mysqld
     value: "{{ mysql_socket }}"
-  # - option: pid-file
-  #   section: mysqld
-  #   value: "{{ mysql_pid }}"
+  - option: pid-file
+    section: mysqld
+    value: "{{ mysql_pid }}"
