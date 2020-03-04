@@ -61,12 +61,12 @@
 #   notify:
 #     - restart mysql server
 
-- name: place /root/.my.cnf
-  template:
-    src:  my.cnf.j2
-    dest: /root/.my.cnf
-    owner: root
-    mode: 0600
+# - name: place /root/.my.cnf
+#   template:
+#     src:  my.cnf.j2
+#     dest: /root/.my.cnf
+#     owner: root
+#     mode: 0600
 
 - name: create databases
   mysql_db:
