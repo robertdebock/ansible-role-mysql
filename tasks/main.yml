@@ -39,6 +39,7 @@
     - name: collect troubleshooting information
       command: "{{ item }}"
       changed_when: no
+      failed_when: no
       loop:
         - systemctl status {{ mysql_service }}
         - journalctl -xe
