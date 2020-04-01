@@ -28,59 +28,11 @@
     - ansible_distribution == "Alpine" or
       ansible_distribution == "Archlinux"
 
-- name: run mysql
-  block:
-    - name: start and enable mysql
-      service:
-        name: "{{ mysql_service }}"
-        state: started
-        enabled: yes
-  rescue:
-    - name: collect troubleshooting information
-      command: "{{ item }}"
-      changed_when: no
-      failed_when: no
-      loop:
-        - systemctl status {{ mysql_service }}
-        - journalctl -xe
-      register: mysql_collect_troubleshooting_information
-
-    - name: show troubleshooting information
-      debug:
-        msg: "{{ item }}"
-      loop: "{{ mysql_collect_troubleshooting_information.results }}"
-    
-    # - name: comment log_error
-    #   replace:
-    #     path: /etc/mysql/mariadb.conf.d/50-server.cnf
-    #     regexp: 'log_error = (.+)'
-    #     replace: '#log_error = \1'
-    #   
-    # - name: run mysqld
-    #   command: /usr/sbin/mysqld
-    #   args:
-    #     creates: nothing
-    #   register: mysql_run_mysqld
-
-    # - name: show output
-    #   debug:
-    #     msg: "{{ mysql_run_mysqld.stdout }}"
-
-# - name: set mysql root user password
-#   mysql_user:
-#     name: root
-#     password: "{{ mysql_root_password }}"
-#     # priv: '*.*:ALL,GRANT'
-#     check_implicit_admin: true
-#   notify:
-#     - restart mysql server
-
-# - name: place /root/.my.cnf
-#   template:
-#     src:  my.cnf.j2
-#     dest: /root/.my.cnf
-#     owner: root
-#     mode: 0600
+- name: start and enable mysql
+  service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: yes
 
 - name: create databases
   mysql_db:

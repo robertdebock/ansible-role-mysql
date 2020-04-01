@@ -11,7 +11,7 @@ on:
       - '*'
   pull_request:
   schedule:
-    - cron: '3 12 13 * *'
+    - cron: '47 9 13 * *'
 
 jobs:
   lint:
@@ -32,8 +32,6 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "amazonlinux"
-            tag: "latest"
           - image: "debian"
             tag: "latest"
           - image: "centos"
