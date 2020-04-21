@@ -11,7 +11,7 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - all
+        - buster
     - name: EL
       versions:
         - 7
