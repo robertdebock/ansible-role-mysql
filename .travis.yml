@@ -24,7 +24,6 @@ env:
     - image="ubuntu" tag="latest"
     - image="ubuntu" tag="bionic"
     - image="ubuntu" tag="xenial"
-    - image="ubuntu" tag="trusty"
 
 cache:
   - pip
@@ -39,5 +38,5 @@ script:
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
   slack:
-    secure: "j5UrbLIi66Cf5EzLLlaC4ODBBc+dAgTs12XRfxtUzMtf+J1LV4cvrBkS5dcwQd59MOMx7QyKtFP2jYrDtgsUNjmj44jYAPv6Fk3MPH6JtIGeJyeVj+i6QkuT0ATN5xRInAz4mTWPZcfDtLC7yhA/hkFbCZcmVVNDlJtpag6W/OZfoqrXZ3eM+ak/rXYAeothWu6GfWpYuPE6bigpsfZ//Jj6zrXQK7snE9B3B7IBYA3MFjTTwVFtWez+L8+5AKgDQq5W/8XoaD+Gf7/cXrjaPUg3opsulgiEgnQsCRGxb0SwAf/D2He4+zzlqE0gIGMxW60QlrPvpmTaG07qpxwp8TYrd32tW+VflcqPhRLQdbWUWu3tBmVVgb7bn2NAys+WN0qwRFqvm9OWmpqe8Vwm7TJ3a4nGwGjPphegoHDpKhnxY//KPxwsXA3ZmBr4cacwz8Q99k9/rk/hxv0Jrv2sJUQVVHp/8fmf/UWWd6tyCM1YXv3isFvS/oAff6X971b2/cVqBhsTIVgM2Y0yQkAjpXbfy/jCEnZPO4sy4B7hXzfejLSOQdwe2IP1JYuGDFjSZgSG3/4Oc5UzyR07lkrhjmFmXwa7S0vL2MHJTcnqtoLOHm8Fd7tzt5Blg6z9iDLYWKCjRiCb/rVWgLlvbTCZP6oSEFeV3fBUtwAUbqhSXFE="
+    secure: FHnS78AkZbjmL3gBIriUypRu87WqixmzDe6QmIi06GMuZWtGr7AVztvmJjkWf2m8KQ74nGJMWD+AvoKLLhk8JEqPSbYQgpoQ7QFHfE8EbBD+n+FoRJBrbW1iP9tFRhdOSJ4NXSLQDBpbc+CEg2w4Pk7O5ksI/nSxjg9ycgBZAJEUJaerz5p2eviCvz7hlcnkAhbVd8H7TJi31HR4taQo2bxNh/XJUOYt1LmjxA2Oxa1SOdYuDxkmi0WkS1rKq5noQFBfviPLbCKsrBd8SbwG4celpgQddg42j7zDJFjf0mdfbcNtN40SieYL6n6UOdWg/kMcl8eRk223zaOUAHCFadbbJy+FZ74A2ZrmudaCIlLomsmLR8yW26+YCQVyq5m/Y/jVZItRH6Ci6172McXA7PruNj3C6Zto8Nrg+rBd3mbbNb1Sre4EBxrpTLzH60wRoZGakK1VRXkT7nSyGrluCdGiHr1S2ANIFxP5RgoITNwFRhXcfobMOM9uM5caQmxTKZzUgsZD12m7gCUGR+yA9xpinkh8lI3u5raMeZaCM5OrKNdIvXUMwXpocPYcqL9/VuW5h5RJpB2WDXUbROmm/fTuw5uQ3KUjhRTHVnVRxqfNwpLcXduDf9Gk0uLMHW7Aliv5MxZYscXqaKdA7OzlacTIDCBGWEBFrFd0bRZ9/OI=
   email: false
