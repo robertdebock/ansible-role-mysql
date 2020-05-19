@@ -52,8 +52,6 @@ jobs:
             tag: "bionic"
           - image: "ubuntu"
             tag: "xenial"
-          - image: "ubuntu"
-            tag: "trusty"
     steps:
       - name: checkout
         uses: actions/checkout@v2
