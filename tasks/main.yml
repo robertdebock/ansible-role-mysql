@@ -62,6 +62,7 @@
     label: "{{ item.name }}"
   when:
     - mysql_users is defined
+  no_log: yes
 
 - name: flush handlers
   meta: flush_handlers
