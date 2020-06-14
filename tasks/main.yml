@@ -28,6 +28,9 @@
     - ansible_distribution == "Alpine" or
       ansible_distribution == "Archlinux"
 
+- name: flush handlers
+  meta: flush_handlers
+
 - name: start and enable mysql
   service:
     name: "{{ mysql_service }}"
