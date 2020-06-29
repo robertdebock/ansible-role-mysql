@@ -1,5 +1,8 @@
 ---
 # tasks file for mysql
+- name: include assert.yml
+  include_tasks: assert.yml
+
 - name: install mysql
   package:
     name: "{{ mysql_packages }}"
