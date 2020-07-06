@@ -1,5 +1,6 @@
 ---
 # vars file for mysql
+
 _mysql_packages:
   default:
     - mariadb-server
