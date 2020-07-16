@@ -7,9 +7,6 @@
   package:
     name: "{{ mysql_packages }}"
     state: present
-  register: mysql_install_mysql
-  until: mysql_install_mysql is succeeded
-  retries: 3
 
 - name: configure mysql
   ini_file:
