@@ -59,7 +59,7 @@
     password: "{{ item.password | default(omit) }}"
     priv: "{{ item.priv | default(omit) }}"
     host: "{{ item.host | default(omit) }}"
-    update_password: on_create
+    update_password: "{{ item.update_password | default('on_create') }}"
     login_unix_socket: "{{ mysql_socket }}"
   loop: "{{ mysql_users }}"
   loop_control:
