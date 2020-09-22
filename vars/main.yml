@@ -29,9 +29,6 @@ _mysql_packages:
     - mysql-devel
     - mysql-server
     - python3-PyMySQL
-  Debian-10:
-    - mariadb-server
-    - python-mysqldb
   Debian:
     - mariadb-server
     - python3-mysqldb
