@@ -45,7 +45,7 @@ _mysql_packages:
   openSUSE Leap:
     - libmysqlclient-devel
     - mariadb
-    - python-MySQL-python
+    - python3-mysqlclient
 
 mysql_packages: "{{ _mysql_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_packages[ansible_distribution] | default(_mysql_packages['default'])) }}"
 
