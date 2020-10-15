@@ -34,6 +34,5 @@ galaxy_info:
     - database
     - installer
     - package
-    - centos
 
 dependencies: []
