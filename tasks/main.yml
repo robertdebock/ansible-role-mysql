@@ -52,6 +52,7 @@
     label: "{{ item.name }}"
   when:
     - mysql_databases is defined
+  no_log: yes
 
 - name: create users
   mysql_user:
