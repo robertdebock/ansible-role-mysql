@@ -17,3 +17,12 @@
         - name: my_user
           password: my_pass
           priv: "my_db.*:ALL"
+
+  post_tasks:
+    - name: try root account
+      mysql_db:
+        name: my_test
+        state: present
+        login_user: root
+        login_password: s3Cur31t4.
+      no_log: yes

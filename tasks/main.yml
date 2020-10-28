@@ -8,8 +8,10 @@
   package:
     name: "{{ mysql_packages }}"
     state: present
+  notify:
+    - set root password
 
-- name: configure mysql
+- name: configure mysql server
   ini_file:
     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
     section: "{{ item.section }}"
@@ -21,6 +23,14 @@
     label: "{{ item.option }}"
   notify:
     - restart mysql server
+
+- name: configure mysql client
+  ini_file:
+    dest: /etc/mysql/mariadb.conf.d/50-client.cnf
+    section: client
+    option: socket
+    value: "{{ mysql_socket }}"
+    mode: "0644"
 
 - name: initialize mysql
   command: "{{ mysql_initialize_command }}"

@@ -4,3 +4,6 @@
   service:
     name: "{{ mysql_service }}"
     state: restarted
+
+- name: set root password
+  command: mysqladmin -u root password {{ mysql_root_password }}
