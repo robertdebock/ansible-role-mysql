@@ -25,4 +25,3 @@
         state: present
         login_user: root
         login_password: s3Cur31t4.
-      no_log: yes
