@@ -53,6 +53,14 @@ For verification `molecule/resources/verify.yml` runs after the role has been ap
         - name: my_user
           password: my_pass
           priv: "my_db.*:ALL"
+
+  post_tasks:
+    - name: try root account
+      mysql_db:
+        name: my_test
+        state: present
+        login_user: root
+        login_password: s3Cur31t4.
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -97,11 +105,11 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
+|debian|all|
 |el|7, 8|
-|debian|buster, bullseye|
 |fedora|all|
 |opensuse|all|
-|ubuntu|focal, bionic|
+|ubuntu|all|
 
 The minimum version of Ansible required is 2.9, tests have been done to:
 
