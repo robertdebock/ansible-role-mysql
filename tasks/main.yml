@@ -43,6 +43,12 @@
 - name: flush handlers
   meta: flush_handlers
 
+- name: place my.cnf
+  template:
+    src: my.cnf.j2
+    dest: /root/.my.cnf
+    mode: "0640"
+
 - name: start and enable mysql
   service:
     name: "{{ mysql_service }}"
