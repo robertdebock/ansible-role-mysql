@@ -3,12 +3,10 @@
   assert:
     that:
       - mysql_bind_address is defined
-      - mysql_bind_address | length > 0
     quiet: yes
 
 - name: test if mysql_root_password is set correctly
   assert:
     that:
       - mysql_root_password is defined
-      - mysql_root_password | length > 0
     quiet: yes
