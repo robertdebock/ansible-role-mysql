@@ -1,9 +1,12 @@
 ---
 # handlers file for mysql
+
 - name: restart mysql server
   service:
     name: "{{ mysql_service }}"
     state: restarted
+  when:
+    - not ansible_check_mode | bool
 
 - name: set root password
   command: mysqladmin -u root password {{ mysql_root_password }}
