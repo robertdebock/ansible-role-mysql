@@ -40,6 +40,12 @@
     - ansible_distribution == "Alpine" or
       ansible_distribution == "Archlinux"
 
+- name: start and enable mysql
+  service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: yes
+
 - name: flush handlers
   meta: flush_handlers
 
@@ -48,12 +54,6 @@
     src: my.cnf.j2
     dest: /root/.my.cnf
     mode: "0640"
-
-- name: start and enable mysql
-  service:
-    name: "{{ mysql_service }}"
-    state: started
-    enabled: yes
 
 - name: create databases
   mysql_db:
