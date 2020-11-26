@@ -18,6 +18,17 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
 
   roles:
     - role: robertdebock.mysql
+      mysql_databases:
+        - name: my_db
+          encoding: utf8
+          collation: utf8_bin
+        - name: my_db
+          state: dump
+          target: /tmp/my_db.mysql
+      mysql_users:
+        - name: my_user
+          password: my_pass
+          priv: "my_db.*:ALL"
 ```
 
 The machine needs to be prepared in CI this is done using `molecule/resources/prepare.yml`:
