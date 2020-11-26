@@ -4,6 +4,13 @@
   become: yes
   gather_facts: yes
 
+  roles:
+    - role: ansible-role-mysql
+      mysql_databases:
+        - name: my_db
+          state: dump
+          target: /tmp/my_db.mysql
+
   post_tasks:
     - name: try root account
       mysql_db:
