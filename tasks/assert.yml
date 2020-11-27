@@ -4,10 +4,12 @@
   assert:
     that:
       - mysql_bind_address is defined
+      - mysql_bind_address is string
     quiet: yes
 
 - name: test if mysql_root_password is set correctly
   assert:
     that:
       - mysql_root_password is defined
+      - mysql_root_password is string
     quiet: yes
