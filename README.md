@@ -22,9 +22,6 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
         - name: my_db
           encoding: utf8
           collation: utf8_bin
-        - name: my_db
-          state: dump
-          target: /tmp/my_db.mysql
       mysql_users:
         - name: my_user
           password: my_pass
