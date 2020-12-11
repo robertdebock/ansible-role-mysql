@@ -38,8 +38,7 @@
   args:
     creates: /var/lib/mysql/mysql
   when:
-    - ansible_distribution == "Alpine" or
-      ansible_distribution == "Archlinux"
+    - ansible_distribution in [ "Alpine", "Archlinux" ]
 
 - name: start and enable mysql
   service:
