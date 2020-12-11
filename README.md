@@ -2,9 +2,9 @@
 
 Install and configure mysql on your system.
 
-|Travis|GitHub|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-mysql.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-mysql)|[![github](https://github.com/robertdebock/ansible-role-mysql/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-mysql/actions)|[![quality](https://img.shields.io/ansible/quality/22971)](https://galaxy.ansible.com/robertdebock/mysql)|[![downloads](https://img.shields.io/ansible/role/d/22971)](https://galaxy.ansible.com/robertdebock/mysql)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-mysql.svg)](https://github.com/robertdebock/ansible-role-mysql/releases/)|
+|Travis|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-mysql.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-mysql)|[![github](https://github.com/robertdebock/ansible-role-mysql/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-mysql/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-mysql/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-mysql)|[![quality](https://img.shields.io/ansible/quality/22971)](https://galaxy.ansible.com/robertdebock/mysql)|[![downloads](https://img.shields.io/ansible/role/d/22971)](https://galaxy.ansible.com/robertdebock/mysql)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-mysql.svg)](https://github.com/robertdebock/ansible-role-mysql/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
