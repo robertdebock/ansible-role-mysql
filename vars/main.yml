@@ -95,9 +95,10 @@ mysql_configuration_options:
     value: "{{ mysql_innodb_io_capacity }}"
 
 _mysql_user:
-  default: mysql
+  default: root
+  Fedora-34: mysql
 
-mysql_user: "{{ _mysql_user[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_user['']) }}"
+mysql_user: "{{ _mysql_user[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_user['default']) }}"
 
 _mysql_set_root_password_command:
   default: "mysqladmin -u root password {{ mysql_root_password }}"
