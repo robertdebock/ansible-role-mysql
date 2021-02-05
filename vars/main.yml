@@ -34,8 +34,6 @@ _mysql_packages:
     - python3-mysqldb
   Fedora:
     - mariadb-server
-    # /usr/include/mysql/mariadb_rpl.h conflicts between attempted installs of mariadb-devel-3:10.3.22-1.fc31.x86_64 and mariadb-connector-c-devel-3.1.9-5.fc31.x86_64
-    # - mariadb-devel
     - mariadb-connector-c-devel
     - python3-PyMySQL
   Ubuntu:
@@ -95,3 +93,15 @@ mysql_configuration_options:
   - section: mysqld
     option: innodb_io_capacity
     value: "{{ mysql_innodb_io_capacity }}"
+
+_mysql_user:
+  default: mysql
+  Fedora-34: root
+
+mysql_user: "{{ _mysql_user[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_user['default']) }}"
+
+_mysql_set_root_password_command:
+  default: "mysqladmin -u root password {{ mysql_root_password }}"
+  Fedora-34: mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ mysql_root_password }}';"
+
+mysql_set_root_password_command: "{{ _mysql_set_root_password_command[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_set_root_password_command['default']) }}"
