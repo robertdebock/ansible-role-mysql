@@ -54,6 +54,12 @@ mysql_bind_address: 127.0.0.1
 
 # The password to set for the root user. Also stored in my.cnf
 mysql_root_password: "s3Cur31t4."
+
+# The buffer pool size.
+mysql_innodb_buffer_pool_size: 1G
+
+# The io capacity.
+mysql_innodb_io_capacity: 4000
 ```
 
 ## [Requirements](#requirements)
