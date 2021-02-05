@@ -96,9 +96,8 @@ mysql_configuration_options:
 
 _mysql_user:
   default: mysql
-  Fedora-34: root
 
-mysql_user: "{{ _mysql_user[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_user['default']) }}"
+mysql_user: "{{ _mysql_user[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_user['']) }}"
 
 _mysql_set_root_password_command:
   default: "mysqladmin -u root password {{ mysql_root_password }}"

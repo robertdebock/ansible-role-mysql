@@ -11,4 +11,4 @@
 - name: set root password
   command: "{{ mysql_set_root_password_command }}"
   become: yes
-  become_user: "{{ mysql_user }}"
+  become_user: "{{ mysql_user | default(omit) }}"
