@@ -9,4 +9,7 @@
     - not ansible_check_mode | bool
 
 - name: set root password
-  command: mysqladmin -u root password {{ mysql_root_password }}
+  # command: mysqladmin -u root password {{ mysql_root_password }}
+  command: mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ mysql_root_password }}';"
+  become: yes
+  become_user: mysql
