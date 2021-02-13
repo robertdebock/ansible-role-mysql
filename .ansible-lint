@@ -5,4 +5,6 @@ exclude_paths:
   - ./meta/exception.yml
   - ./meta/preferences.yml
   - ./molecule/default/verify.yml
+  - ./molecule/default/collections.yml
   - ./.tox
+  - .cache
