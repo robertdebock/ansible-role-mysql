@@ -7,14 +7,14 @@
   delegate_to: localhost
 
 - name: install mysql
-  package:
+  ansible.builtin.package:
     name: "{{ mysql_packages }}"
     state: present
   notify:
     - set root password
 
 - name: configure mysql server
-  ini_file:
+  community.general.ini_file:
     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
     section: "{{ item.section }}"
     option: "{{ item.option }}"
@@ -27,7 +27,7 @@
     - restart mysql server
 
 - name: configure mysql client
-  ini_file:
+  community.general.ini_file:
     dest: /etc/mysql/mariadb.conf.d/50-client.cnf
     section: client
     option: socket
@@ -42,22 +42,22 @@
     - ansible_distribution in [ "Alpine", "Archlinux" ]
 
 - name: start and enable mysql
-  service:
+  ansible.builtin.service:
     name: "{{ mysql_service }}"
     state: started
     enabled: yes
 
 - name: flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: place my.cnf
-  template:
+  ansible.builtin.template:
     src: my.cnf.j2
     dest: /root/.my.cnf
     mode: "0640"
 
 - name: create databases
-  mysql_db:
+  community.mysql.mysql_db:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
     target: "{{ item.target | default(omit) }}"
@@ -71,10 +71,10 @@
     label: "{{ item.name }}"
   when:
     - mysql_databases is defined
-  no_log: yes
+  # no_log: yes
 
 - name: create users
-  mysql_user:
+  community.mysql.mysql_user:
     name: "{{ item.name }}"
     state: present
     password: "{{ item.password | default(omit) }}"
@@ -92,4 +92,4 @@
   no_log: yes
 
 - name: flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers

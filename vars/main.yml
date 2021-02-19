@@ -17,10 +17,6 @@ _mysql_packages:
     - mariadb-server
     - mariadb-devel
     - MySQL-python
-  RedHat-7:
-    - mariadb-devel
-    - mariadb-server
-    - MySQL-python
   CentOS-7:
     - mariadb-devel
     - mariadb-server
@@ -36,14 +32,18 @@ _mysql_packages:
     - mariadb-server
     - mariadb-connector-c-devel
     - python3-PyMySQL
-  Ubuntu:
-    - mariadb-server
-    - libssl-dev
-    - python3-mysqldb
   openSUSE Leap:
     - libmysqlclient-devel
     - mariadb
     - python3-mysqlclient
+  RedHat-7:
+    - mariadb-devel
+    - mariadb-server
+    - MySQL-python
+  Ubuntu:
+    - mariadb-server
+    - libssl-dev
+    - python3-mysqldb
 
 mysql_packages: "{{ _mysql_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_packages[ansible_distribution] | default(_mysql_packages['default'])) }}"
 
