@@ -71,7 +71,7 @@
     label: "{{ item.name }}"
   when:
     - mysql_databases is defined
-  # no_log: yes
+  no_log: yes
 
 - name: create users
   community.mysql.mysql_user:
