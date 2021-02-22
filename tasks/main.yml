@@ -35,7 +35,7 @@
     mode: "0644"
 
 - name: initialize mysql
-  command: "{{ mysql_initialize_command }}"
+  ansible.builtin.command: "{{ mysql_initialize_command }}"
   args:
     creates: /var/lib/mysql/mysql
   when:
