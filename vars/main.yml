@@ -71,12 +71,6 @@ _mysql_socket:
 
 mysql_socket: "{{ _mysql_socket[ansible_os_family] | default(_mysql_socket['default']) }}"
 
-_mysql_pid:
-  default: /var/run/mysql/mysql.pid
-  Debian: /tmp/mysql.pid
-
-mysql_pid: "{{ _mysql_pid[ansible_os_family] | default(_mysql_pid['default']) }}"
-
 mysql_configuration_options:
   - option: bind-address
     section: mysqld
