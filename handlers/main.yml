@@ -11,8 +11,8 @@
 - name: set root password
   community.mysql.mysql_user:
     login_host: localhost
-    login_user: root
-    login_password: ""
+    # login_user: root
+    # login_password: ""
     name: root
     password: "{{ mysql_root_password }}"
     state: present
