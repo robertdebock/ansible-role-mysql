@@ -9,6 +9,4 @@
     - not ansible_check_mode | bool
 
 - name: set root password
-  ansible.builtin.command: "{{ mysql_set_root_password_command }}"
-  become: yes
-  become_user: "{{ mysql_user }}"
+  ansible.builtin.include_tasks: tasks/set_root_password.yml
