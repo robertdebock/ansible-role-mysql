@@ -17,7 +17,7 @@
 
   post_tasks:
     - name: try root account
-      mysql_db:
+      community.mysql.mysql_db:
         name: my_test
         state: present
         login_unix_socket: "{{ mysql_socket }}"
