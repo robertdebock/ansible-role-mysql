@@ -139,7 +139,7 @@
 - name: test item.host_all in mysql_users is set correctly
   ansible.builtin.assert:
     that:
-      - item.host_all is string
+      - item.host_all is boolean
     quiet: yes
   loop: "{{ mysql_users }}"
   loop_control:
@@ -151,7 +151,7 @@
 - name: test item.update_password in mysql_users is set correctly
   ansible.builtin.assert:
     that:
-      - item.update_password is string
+      - item.update_password is boolean
     quiet: yes
   loop: "{{ mysql_users }}"
   loop_control:
