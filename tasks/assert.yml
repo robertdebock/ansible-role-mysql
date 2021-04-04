@@ -44,7 +44,7 @@
   ansible.builtin.assert:
     that:
       - item.state is string
-      - item.state in [ "absent", "present" ]
+      - item.state in [ "absent", "dump", "import", "present" ]
     quiet: yes
   loop: "{{ mysql_databases }}"
   loop_control:
