@@ -15,7 +15,21 @@
           state: dump
           target: /tmp/my_db.mysql
 
-  post_tasks:
+  tasks:
+    - name: install netstat
+      package:
+        name: net-tools
+        state: present
+      notify:
+        - remote netstat
+
+    - name: check if mysql is bound to 127.0.0.1
+      command:
+        cmd: netstat -tulpen
+      register: mysql_netstat
+      failed_when:
+        - '"127.0.0.1" not in mysql_netstat.stdout'
+
     - name: try root account
       community.mysql.mysql_db:
         name: my_test
@@ -23,3 +37,9 @@
         login_unix_socket: "{{ mysql_socket }}"
         login_user: root
         login_password: "{{ mysql_root_password }}"
+
+  handlers:
+    - name: remove netstat
+      package:
+        name: net-tools
+        state: absent
