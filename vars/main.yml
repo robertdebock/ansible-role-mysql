@@ -102,6 +102,6 @@ mysql_user: "{{ _mysql_user[ansible_distribution ~ '-' ~ ansible_distribution_ma
 
 _mysql_configuration_destination:
   default: /etc/mysql/mariadb.conf.d/50-server.cnf
-  Fedora: /etc/my.cnf.d/50-server.cnf
+  RedHat: /etc/my.cnf.d/50-server.cnf
 
-mysql_configuration_destination: "{{ _mysql_configuration_destination[ansible_distribution] | default(_mysql_configuration_destination['default']) }}"
+mysql_configuration_destination: "{{ _mysql_configuration_destination[ansible_os_family] | default(_mysql_configuration_destination['default']) }}"
