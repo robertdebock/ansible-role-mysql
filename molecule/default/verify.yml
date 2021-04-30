@@ -21,7 +21,7 @@
         name: net-tools
         state: present
       notify:
-        - remote netstat
+        - remove netstat
 
     - name: check if mysql is bound to 127.0.0.1
       command:
