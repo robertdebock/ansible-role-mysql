@@ -99,3 +99,9 @@ _mysql_user:
   Fedora-34: mysql
 
 mysql_user: "{{ _mysql_user[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_user['default']) }}"
+
+_mysql_configuration_destination:
+  default: /etc/mysql/mariadb.conf.d/50-server.cnf
+  Fedora: /etc/my.cnf.d/50-server.cnf
+
+mysql_configuration_destination: "{{ _mysql_configuration_destination[ansible_distribution] | default(_mysql_configuration_destination['default']) }}"
