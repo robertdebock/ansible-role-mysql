@@ -15,6 +15,12 @@
           state: dump
           target: /tmp/my_db.mysql
 
+  vars:
+    _netstat_package:
+      default: net-tools
+      Suse: net-tools-deprecated
+    netstat_pacakge: "{{ _netstat_package[ansible_os_family] | default(_netstat_package['default']) }}"
+
   tasks:
     - name: install netstat
       package:
