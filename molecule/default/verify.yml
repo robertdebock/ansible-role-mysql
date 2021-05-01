@@ -23,14 +23,14 @@
 
   tasks:
     - name: install netstat
-      package:
+      ansible.builtin.package:
         name: net-tools
         state: present
       notify:
         - remove netstat
 
     - name: check if mysql is bound to 127.0.0.1
-      command:
+      ansible.builtin.command:
         cmd: netstat -tulpen
       register: mysql_netstat
       failed_when:
@@ -46,6 +46,6 @@
 
   handlers:
     - name: remove netstat
-      package:
+      ansible.builtin.package:
         name: net-tools
         state: absent
