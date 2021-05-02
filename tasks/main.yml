@@ -15,7 +15,7 @@
 
 - name: configure mysql server
   community.general.ini_file:
-    dest: "{{ mysql_configuration_destination }}/mysql-server.cnf"
+    dest: "{{ mysql_configuration_destination }}/{{ mysql_name }}-server.cnf"
     section: "{{ item.section }}"
     option: "{{ item.option }}"
     value: "{{ item.value }}"
@@ -28,7 +28,7 @@
 
 - name: configure mysql client
   community.general.ini_file:
-    dest: "{{ mysql_configuration_destination }}/mysq-client.cnf"
+    dest: "{{ mysql_configuration_destination }}/{{ mysql_name }}-client.cnf"
     section: client
     option: socket
     value: "{{ mysql_socket }}"
