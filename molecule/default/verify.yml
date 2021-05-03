@@ -24,7 +24,7 @@
   tasks:
     - name: install netstat
       ansible.builtin.package:
-        name: "{{ netstat_pacakge }}"
+        name: "{{ netstat_package }}"
         state: present
       notify:
         - remove netstat
