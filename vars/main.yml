@@ -65,12 +65,12 @@ _mysql_socket:
 
 mysql_socket: "{{ _mysql_socket[ansible_os_family] | default(_mysql_socket['default']) }}"
 
-_mysql_pid:
-  default: /var/run/mysql/mysql.pid
-  Debian: /tmp/mysql.pid
-  RedHat: /run/mysqld/mysqld.pid
-
-mysql_pid: "{{ _mysql_pid[ansible_os_family] | default(_mysql_pid['default']) }}"
+# _mysql_pid:
+#   default: /var/run/mysql/mysql.pid
+#   Debian: /tmp/mysql.pid
+#   RedHat: /run/mysqld/mysqld.pid
+#
+# mysql_pid: "{{ _mysql_pid[ansible_os_family] | default(_mysql_pid['default']) }}"
 
 mysql_configuration_options:
   - option: bind-address
@@ -79,9 +79,9 @@ mysql_configuration_options:
   - option: socket
     section: mysqld
     value: "{{ mysql_socket }}"
-  - option: pid-file
-    section: mysqld
-    value: "{{ mysql_pid }}"
+  # - option: pid-file
+  #   section: mysqld
+  #   value: "{{ mysql_pid }}"
   - section: mysqld
     option: innodb_buffer_pool_size
     value: "{{ mysql_innodb_buffer_pool_size }}"
