@@ -19,12 +19,12 @@
     _netstat_package:
       default: net-tools
       Suse: net-tools-deprecated
-    netstat_pacakge: "{{ _netstat_package[ansible_os_family] | default(_netstat_package['default']) }}"
+    netstat_package: "{{ _netstat_package[ansible_os_family] | default(_netstat_package['default']) }}"
 
   tasks:
     - name: install netstat
       ansible.builtin.package:
-        name: net-tools
+        name: "{{ netstat_pacakge }}"
         state: present
       notify:
         - remove netstat
@@ -47,5 +47,5 @@
   handlers:
     - name: remove netstat
       ansible.builtin.package:
-        name: net-tools
+        name: "{{ netstat_package }}"
         state: absent
