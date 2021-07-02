@@ -3,7 +3,8 @@
 
 _mysql_name:
   default: mariadb
-  RedHat-8: mysql
+  RedHat-8: &RHEL8 mysql
+  Rocky-8: *RHEL8
   Amazon-2018: mysql
 
 mysql_name: "{{ _mysql_name[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_mysql_name['default']) }}"
@@ -27,14 +28,14 @@ _mysql_packages:
     - libmysqlclient-devel
     - "{{ mysql_name }}"
     - python3-mysqlclient
-  RedHat: &RHEL
-    - "{{ mysql_name }}-server"
-    - "{{ mysql_name }}-devel"
-    - python3-PyMySQL
   RedHat-7:
     - "{{ mysql_name }}-server"
     - "{{ mysql_name }}-devel"
     - MySQL-python
+  RedHat: &RHEL
+    - "{{ mysql_name }}-server"
+    - "{{ mysql_name }}-devel"
+    - python3-PyMySQL
   Rocky: *RHEL
 
 mysql_packages: "{{ _mysql_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_mysql_packages[ansible_os_family] | default(_mysql_packages['default'])) }}"
@@ -47,14 +48,16 @@ mysql_initialize_command: "{{ _mysql_initialize_command[ansible_os_family] }}"
 
 _mysql_service:
   default: "{{ mysql_name }}"
-  RedHat-8: "{{ mysql_name}}d"
+  RedHat-8: &RHEL8 "{{ mysql_name}}d"
+  Rocky: *RHEL8
 
 mysql_service: "{{ _mysql_service[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_mysql_service['default']) }}"
 
 _mysql_socket:
   default: /var/run/mysql/mysql.sock
   Debian: /var/run/mysqld/mysqld.sock
-  RedHat: /var/lib/mysql/mysql.sock
+  RedHat: &RHEL /var/lib/mysql/mysql.sock
+  Rocky: *RHEL
 
 mysql_socket: "{{ _mysql_socket[ansible_os_family] | default(_mysql_socket['default']) }}"
 
@@ -74,6 +77,7 @@ mysql_configuration_options:
 
 _mysql_configuration_destination:
   default: /etc/mysql/mariadb.conf.d
-  RedHat: /etc/my.cnf.d
+  RedHat: &RHEL /etc/my.cnf.d
+  Rocky: *RHEL
 
 mysql_configuration_destination: "{{ _mysql_configuration_destination[ansible_os_family] | default(_mysql_configuration_destination['default']) }}"
