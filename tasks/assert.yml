@@ -152,6 +152,7 @@
   ansible.builtin.assert:
     that:
       - item.update_password is string
+      - item.update_password in [ "always", "on_create" ]
     quiet: yes
   loop: "{{ mysql_users }}"
   loop_control:

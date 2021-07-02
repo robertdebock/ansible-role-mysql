@@ -14,3 +14,4 @@
         - name: my_user
           password: my_pass
           priv: "my_db.*:ALL"
+          update_password: on_create
