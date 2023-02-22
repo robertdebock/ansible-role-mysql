@@ -70,7 +70,7 @@ mysql_innodb_io_capacity: 4000
 
 - pip packages listed in [requirements.txt](https://github.com/robertdebock/ansible-role-mysql/blob/master/requirements.txt).
 
-## [Status of used roles](#status-of-requirements)
+## [State of used roles](#state-of-used-roles)
 
 The following roles are used to prepare a system. You can prepare your system in another way.
 
