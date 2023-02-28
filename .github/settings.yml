@@ -5,4 +5,4 @@
 repository:
   description: Install and configure mysql on your system.
   homepage: https://robertdebock.nl/
-  topics: mysql, mariadb, database, installer, package, ansible, molecule, tox, playbook, hacktoberfest
+  topics: mysql, mariadb, database, installer, package, ansible, molecule, tox, playbook
