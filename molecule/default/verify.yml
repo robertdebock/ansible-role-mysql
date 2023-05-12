@@ -9,9 +9,9 @@
   roles:
     - role: ansible-role-mysql
       mysql_users:
-        - name: my_user
+        - name: My_user
       mysql_databases:
-        - name: my_db
+        - name: My_db
           state: dump
           target: /tmp/my_db.mysql
 
@@ -22,21 +22,21 @@
     netstat_package: "{{ _netstat_package[ansible_os_family] | default(_netstat_package['default']) }}"
 
   tasks:
-    - name: install netstat
+    - name: Install netstat
       ansible.builtin.package:
         name: "{{ netstat_package }}"
         state: present
       notify:
         - remove netstat
 
-    - name: check if mysql is bound to 127.0.0.1
+    - name: Check if mysql is bound to 127.0.0.1
       ansible.builtin.command:
         cmd: netstat -tulpen
       register: mysql_netstat
       failed_when:
         - '"127.0.0.1" not in mysql_netstat.stdout'
 
-    - name: try root account
+    - name: Try root account
       community.mysql.mysql_db:
         name: my_test
         state: present
@@ -46,7 +46,7 @@
 
   handlers:
 
-    - name: remove netstat
+    - name: Remove netstat
       ansible.builtin.package:
         name: "{{ netstat_package }}"
         state: absent
