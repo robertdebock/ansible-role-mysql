@@ -9,9 +9,9 @@
   roles:
     - role: ansible-role-mysql
       mysql_users:
-        - name: My_user
+        - name: my_user
       mysql_databases:
-        - name: My_db
+        - name: my_db
           state: dump
           target: /tmp/my_db.mysql
 
