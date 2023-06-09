@@ -5,6 +5,7 @@
     that:
       - mysql_bind_address is defined
       - mysql_bind_address is string
+      - mysql_bind_address is not none
     quiet: yes
 
 - name: assert | Test if mysql_root_password is set correctly
@@ -12,6 +13,7 @@
     that:
       - mysql_root_password is defined
       - mysql_root_password is string
+      - mysql_root_password is not none
     quiet: yes
 
 - name: assert | Test if mysql_innodb_buffer_pool_size is set correctly
@@ -19,6 +21,7 @@
     that:
       - mysql_innodb_buffer_pool_size is defined
       - mysql_innodb_buffer_pool_size is string
+      - mysql_innodb_buffer_pool_size is not none
     quiet: yes
 
 - name: assert | Test if mysql_innodb_io_capacity is set correctly
@@ -33,6 +36,7 @@
     that:
       - item.name is defined
       - item.name is string
+      - item.name is not none
     quiet: yes
   loop: "{{ mysql_databases }}"
   loop_control:
@@ -57,6 +61,7 @@
   ansible.builtin.assert:
     that:
       - item.target is string
+      - item.target is not none
     quiet: yes
   loop: "{{ mysql_databases }}"
   loop_control:
@@ -69,6 +74,7 @@
   ansible.builtin.assert:
     that:
       - item.encoding is string
+      - item.encoding is not none
     quiet: yes
   loop: "{{ mysql_databases }}"
   loop_control:
@@ -81,6 +87,7 @@
   ansible.builtin.assert:
     that:
       - item.collation is string
+      - item.collation is not none
     quiet: yes
   loop: "{{ mysql_databases }}"
   loop_control:
@@ -93,6 +100,7 @@
   ansible.builtin.assert:
     that:
       - item.name is string
+      - item.name is not none
     quiet: yes
   loop: "{{ mysql_users }}"
   loop_control:
@@ -104,6 +112,7 @@
   ansible.builtin.assert:
     that:
       - item.password is string
+      - item.password is not none
     quiet: yes
   loop: "{{ mysql_users }}"
   loop_control:
@@ -116,6 +125,7 @@
   ansible.builtin.assert:
     that:
       - item.priv is string
+      - item.priv is not none
     quiet: yes
   loop: "{{ mysql_users }}"
   loop_control:
@@ -128,6 +138,7 @@
   ansible.builtin.assert:
     that:
       - item.name is string
+      - item.name is not none
     quiet: yes
   loop: "{{ mysql_users }}"
   loop_control:
