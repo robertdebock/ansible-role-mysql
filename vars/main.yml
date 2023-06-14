@@ -52,7 +52,7 @@ _mysql_service:
   default: "{{ mysql_name }}"
   RedHat: "{{ mysql_name }}d"
 
-mysql_service: "{{ _mysql_service[ansible_os_family] | default(_mysql_service['default'] ) }}"
+mysql_service: "{{ _mysql_service[ansible_distribution] | default(_mysql_service['default'] ) }}"
 
 _mysql_socket:
   default: /var/run/mysql/mysql.sock
