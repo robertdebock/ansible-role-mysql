@@ -32,9 +32,12 @@ _mysql_packages:
     - "{{ mysql_name }}-server"
     - "{{ mysql_name }}-devel"
     - MySQL-python
-  RedHat:
+  RedHat-8:
     - "{{ mysql_name }}-server"
     - "{{ mysql_name }}-devel"
+    - python3-PyMySQL
+  RedHat:
+    - "{{ mysql_name }}-server"
     - python3-PyMySQL
 
 mysql_packages: "{{ _mysql_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_mysql_packages[ansible_os_family] | default(_mysql_packages['default'] )) }}"
