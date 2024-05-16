@@ -56,6 +56,9 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # The address mysql should bind to.
 mysql_bind_address: "127.0.0.1"
 
+# The port to listen on.
+mysql_port: 3306
+
 # The password to set for the root user. Also stored in my.cnf
 mysql_root_password: "s3Cur31t4."
 
