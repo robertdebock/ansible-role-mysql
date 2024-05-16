@@ -19,6 +19,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
   roles:
     - role: robertdebock.mysql
+      mysql_port: 3307
       mysql_databases:
         - name: my_db
           encoding: utf8
@@ -76,6 +77,9 @@ mysql_configuration_options:
   - option: bind-address
     section: mysqld
     value: "{{ mysql_bind_address }}"
+  - option: port
+    section: mysqld
+    value: "{{ mysql_port }}"
   - option: socket
     section: mysqld
     value: "{{ mysql_socket }}"

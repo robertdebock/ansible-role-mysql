@@ -8,6 +8,7 @@
 
   roles:
     - role: ansible-role-mysql
+      mysql_port: 3307
       mysql_users:
         - name: my_user
       mysql_databases:

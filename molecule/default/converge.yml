@@ -6,6 +6,7 @@
 
   roles:
     - role: ansible-role-mysql
+      mysql_port: 3307
       mysql_databases:
         - name: my_db
           encoding: utf8
