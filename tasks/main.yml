@@ -54,11 +54,12 @@
     - name: Run status command
       ansible.builtin.command:
         cmd: systemctl status {{ mysql_service }}
-      register: result
+      change_when: true
 
     - name: Run journalctl
       ansible.builtin.command:
         cmd: journalctl -u {{ mysql_service }}
+      changed_when: true
 
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers
