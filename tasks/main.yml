@@ -54,7 +54,7 @@
     - name: Run status command
       ansible.builtin.command:
         cmd: systemctl status {{ mysql_service }}
-      change_when: false
+      changed_when: false
       register: systemctl_status
 
     - name: Show status output
