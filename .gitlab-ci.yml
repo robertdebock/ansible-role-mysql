@@ -30,8 +30,6 @@ molecule:
         tag: "latest"
       - image: "ubuntu"
         tag: "jammy"
-      - image: "ubuntu"
-        tag: "focal"
 
 galaxy:
   script:
