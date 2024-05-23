@@ -44,34 +44,10 @@
     - ansible_distribution in [ "Alpine", "Archlinux" ]
 
 - name: Start and enable mysql
-  block:
-    - name: Start and enable mysql
-      ansible.builtin.service:
-        name: "{{ mysql_service }}"
-        state: started
-        enabled: true
-  rescue:
-    - name: Run status command
-      ansible.builtin.command:
-        cmd: systemctl status {{ mysql_service }}
-      changed_when: false
-      failed_when: false
-      register: systemctl_status
-
-    - name: Show status output
-      ansible.builtin.debug:
-        msg: "{{ systemctl_status.stdout }}"
-
-    - name: Run journalctl
-      ansible.builtin.command:
-        cmd: journalctl -u {{ mysql_service }}
-      changed_when: false
-      failed_when: false
-      register: journalctl_output
-
-    - name: Show journalctl
-      ansible.builtin.debug:
-        msg: "{{ journalctl_output.stdout }}"
+  ansible.builtin.service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: true
 
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers
