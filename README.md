@@ -120,9 +120,8 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |container|tags|
 |---------|----|
 |[Debian](https://hub.docker.com/r/robertdebock/debian)|bullseye|
-|[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|8, 9|
+|[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|9|
 |[Fedora](https://hub.docker.com/r/robertdebock/fedora)|all|
-|[opensuse](https://hub.docker.com/r/robertdebock/opensuse)|all|
 |[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|noble, jammy|
 
 The minimum version of Ansible required is 2.12, tests have been done to:
