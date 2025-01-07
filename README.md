@@ -24,6 +24,9 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
         - name: my_db
           encoding: utf8
           collation: utf8_bin
+        # - name: imported
+        #   state: import
+        #   target: /path/to/dump.sql
       mysql_users:
         - name: my_user
           password: my_pass
