@@ -11,9 +11,9 @@
         - name: my_db
           encoding: utf8
           collation: utf8_bin
-        # - name: imported
-        #   state: import
-        #   target: /path/to/dump.sql
+        - name: my_imported_db
+          # This file will be imported once at creation of the database.
+          initial_import: /path/to/dump.sql  # .gz or also allowed.
       mysql_users:
         - name: my_user
           password: my_pass
