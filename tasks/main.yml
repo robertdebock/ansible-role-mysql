@@ -76,15 +76,13 @@
     - item.initial_import is not defined
   no_log: true
 
-- name: Check if database exists
+- name: List databases
   community.mysql.mysql_info:
     login_unix_socket: "{{ mysql_socket }}"
     login_user: root
     login_password: "{{ mysql_root_password }}"
     filter: databases
   register: mysql_info
-  when:
-    - item.initial_import is defined
   no_log: true
 
 - name: Import database
