@@ -5,7 +5,7 @@
   gather_facts: true
 
   roles:
-    - role: ansible-role-mysql
+    - role: robertdebock.mysql
       mysql_port: 3307
       mysql_databases:
         - name: my_db
