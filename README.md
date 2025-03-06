@@ -18,7 +18,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   gather_facts: true
 
   roles:
-    - role: robertdebock.mysql
+    - role: ansible-role-mysql
       mysql_port: 3307
       mysql_databases:
         - name: my_db
