@@ -5,6 +5,13 @@
   gather_facts: true
 
   tasks:
+    - name: Ensure ss is available on RedHat
+      ansible.builtin.package:
+        name: iproute
+        state: present
+      when:
+        - ansible_os_family == "RedHat"
+
     - name: Check if mysql is bound to 127.0.0.1
       ansible.builtin.command:
         cmd: ss -tulpen
