@@ -4,49 +4,20 @@
   become: true
   gather_facts: true
 
-  vars_files: "../../vars/main.yml"
-
-  roles:
-    - role: ansible-role-mysql
-      mysql_port: 3307
-      mysql_users:
-        - name: my_user
-      mysql_databases:
-        - name: my_db
-          state: dump
-          target: /tmp/my_db.mysql
-
-  vars:
-    _netstat_package:
-      default: net-tools
-      Suse: net-tools-deprecated
-    netstat_package: "{{ _netstat_package[ansible_os_family] | default(_netstat_package['default']) }}"
-
   tasks:
-    - name: Install netstat
-      ansible.builtin.package:
-        name: "{{ netstat_package }}"
-        state: present
-      notify:
-        - Remove netstat
-
     - name: Check if mysql is bound to 127.0.0.1
       ansible.builtin.command:
-        cmd: netstat -tulpen
+        cmd: ss -tulpen
+      changed_when: false
       register: mysql_netstat
       failed_when:
-        - '"127.0.0.1" not in mysql_netstat.stdout'
+        - '"127.0.0.1:3307" not in mysql_netstat.stdout'
 
     - name: Try root account
       community.mysql.mysql_db:
         name: my_test
         state: present
-        login_unix_socket: "{{ mysql_socket }}"
+        login_host: 127.0.0.1
+        login_port: 3307
         login_user: root
-        login_password: "{{ mysql_root_password }}"
-
-  handlers:
-    - name: Remove netstat
-      ansible.builtin.package:
-        name: "{{ netstat_package }}"
-        state: absent
+        login_password: "s3Cur31t4."
