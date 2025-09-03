@@ -12,25 +12,25 @@ _mysql_packages:
   default:
     - "{{ mysql_name }}-server"
     - "{{ mysql_name }}-devel"
-    - python2-mysql
+    - python3-PyMySQL
   Alpine:
     - "{{ mysql_name }}"
-    - py-mysqldb
+    - py3-pymysql
   Amazon-2018:
     - "{{ mysql_name }}-server"
     - "{{ mysql_name }}-devel"
-    - MySQL-python27
+    - python3-PyMySQL
   Debian:
     - "{{ mysql_name }}-server"
-    - python3-mysqldb
+    - python3-pymysql
   Suse:
     - libmysqlclient-devel
     - "{{ mysql_name }}"
-    - python3-mysqlclient
+    - python3-PyMySQL
   RedHat-7:
     - "{{ mysql_name }}-server"
     - "{{ mysql_name }}-devel"
-    - MySQL-python
+    - python3-PyMySQL
   RedHat-8:
     - "{{ mysql_name }}-server"
     - "{{ mysql_name }}-devel"

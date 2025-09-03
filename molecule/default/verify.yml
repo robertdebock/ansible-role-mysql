@@ -4,22 +4,7 @@
   become: true
   gather_facts: true
 
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-
   tasks:
-    - name: Ensure pip is available
-      ansible.builtin.package:
-        name: python3-pip
-        state: present
-      when:
-        - ansible_os_family in [ "Debian", "RedHat", "Suse"]
-
-    - name: Install PyMySQL for modern MySQL connector
-      ansible.builtin.pip:
-        name: PyMySQL
-        state: present
-
     - name: Ensure ss is available on RedHat
       ansible.builtin.package:
         name: iproute
@@ -43,5 +28,5 @@
         login_port: 3307
         login_user: root
         login_password: "s3Cur31t4."
-        login_unix_socket: null
+        # login_unix_socket: null
         connect_timeout: 30
