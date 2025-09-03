@@ -19,8 +19,7 @@ galaxy_info:
         - all
     - name: Ubuntu
       versions:
-        - noble
-        - jammy
+        - all
 
   galaxy_tags:
     - mysql
