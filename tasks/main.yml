@@ -41,7 +41,7 @@
     cmd: "{{ mysql_initialize_command }}"
     creates: /var/lib/mysql/mysql
   when:
-    - ansible_distribution in [ "Alpine", "Archlinux" ]
+    - ansible_facts['distribution'] in [ "Alpine", "Archlinux" ]
 
 - name: Start and enable mysql
   ansible.builtin.service:
