@@ -59,7 +59,7 @@
     mode: "0640"
 
 - name: Create databases
-  community.mysql.mysql_db:
+  ansible.mysql.mysql_db:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
     target: "{{ item.target | default(omit) }}"
@@ -77,7 +77,7 @@
   no_log: true
 
 - name: List databases
-  community.mysql.mysql_info:
+  ansible.mysql.mysql_info:
     login_unix_socket: "{{ mysql_socket }}"
     login_user: root
     login_password: "{{ mysql_root_password }}"
@@ -86,7 +86,7 @@
   no_log: true
 
 - name: Import database
-  community.mysql.mysql_db:
+  ansible.mysql.mysql_db:
     name: "{{ item.name }}"
     state: "import"
     target: "{{ item.initial_import }}"
@@ -101,7 +101,7 @@
     - item.name not in mysql_info.databases
 
 - name: Create users
-  community.mysql.mysql_user:
+  ansible.mysql.mysql_user:
     name: "{{ item.name }}"
     state: present
     password: "{{ item.password | default(omit) }}"

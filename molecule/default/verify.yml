@@ -21,7 +21,7 @@
         - '"127.0.0.1:3307" not in mysql_netstat.stdout'
 
     - name: Try root account
-      community.mysql.mysql_db:
+      ansible.mysql.mysql_db:
         name: my_test
         state: present
         login_host: 127.0.0.1
