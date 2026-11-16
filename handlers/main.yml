@@ -11,7 +11,7 @@
     state: restarted
 
 - name: Set root password
-  community.mysql.mysql_user:
+  ansible.mysql.mysql_user:
     login_unix_socket: "{{ mysql_socket }}"
     login_user: root
     login_password: ""

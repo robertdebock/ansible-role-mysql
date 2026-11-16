@@ -2,5 +2,5 @@
 roles:
   - name: robertdebock.bootstrap
 collections:
-  - name: community.mysql
+  - name: ansible.mysql
   - name: community.general
